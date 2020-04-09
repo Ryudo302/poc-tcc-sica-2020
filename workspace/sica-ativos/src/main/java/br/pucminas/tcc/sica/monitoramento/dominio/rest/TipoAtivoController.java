@@ -15,7 +15,7 @@ public class TipoAtivoController {
     @Autowired
     private TipoAtivoService service;
 
-    @GetMapping(value = "/tipos-ativo", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/tipos-ativo", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<TipoAtivo> getTodosTiposAtivo() {
         return service.buscarTodos();
     }

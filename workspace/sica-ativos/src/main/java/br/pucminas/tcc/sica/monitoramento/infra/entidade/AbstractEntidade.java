@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.monitoramento.infra.persistencia;
+package br.pucminas.tcc.sica.monitoramento.infra.entidade;
 
 import java.io.Serializable;
 

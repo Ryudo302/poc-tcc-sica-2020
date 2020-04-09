@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 import org.apache.commons.lang3.builder.*;
 
-import br.pucminas.tcc.sica.monitoramento.infra.persistencia.AbstractEntidade;
+import br.pucminas.tcc.sica.monitoramento.infra.entidade.AbstractEntidade;
 
 @Entity
 @Table(name = "TIPO_ATIVO")

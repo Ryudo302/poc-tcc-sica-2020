@@ -1,4 +1,6 @@
 /target/
+/node_modules/
 /.settings/
 .project
 .classpath
+src/main/resources/static/built/

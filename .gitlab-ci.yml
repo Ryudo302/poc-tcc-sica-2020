@@ -36,7 +36,9 @@ build:
   cache:
     paths:
       - .m2/repository
-      - target/
+      - workspace/sica-parent/target/
+      - workspace/driver-sensores/target/
+      - workspace/sica-commons/target/
   before_script:
     - git --version
   script:

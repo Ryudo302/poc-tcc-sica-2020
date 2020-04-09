@@ -1,0 +1,36 @@
+{
+	"name": "sica-ativos",
+	"version": "1.0.0-SNAPSHOT",
+	"description": "Módulo de gestão de ativos da empresa.",
+	"repository": {
+		"type": "git",
+		"url": "git@gitlab.com:ThiagoColbert/poc-tcc-sica-2020.git"
+	},
+	"keywords": [
+		"sica",
+		"ativos",
+		"crud"
+	],
+	"author": "Thiago L. C. Miranda",
+	"license": "MIT License",
+	"bugs": {
+		"url": "https://gitlab.com/ThiagoColbert/poc-tcc-sica-2020/issues"
+	},
+	"homepage": "https://gitlab.com/ThiagoColbert/poc-tcc-sica-2020",
+	"dependencies": {
+		"react": "^16.5.2",
+		"react-dom": "^16.5.2",
+		"fetch-defaults": "^1.0.0"
+	},
+	"scripts": {
+		"watch": "webpack --watch -d"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.1.0",
+		"@babel/preset-env": "^7.1.0",
+		"@babel/preset-react": "^7.0.0",
+		"babel-loader": "^8.0.2",
+		"webpack": "^4.19.1",
+		"webpack-cli": "^3.1.0"
+	}
+}
