@@ -1,6 +1,6 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const api = require('./client');
+import React from 'react';
+import api from './client';
+import '../resources/static/css/App.css';
 
 class App extends React.Component {
 
@@ -16,8 +16,7 @@ class App extends React.Component {
             .then(response => response.json())
             .then(ativos => {
                 ativos.forEach(ativo => {
-                    api('/api/ativos/' + ativo.id + '/imagem', { method: 'GET', headers: { Accept: 'image/jpeg' } })
-                        .then(imagem => ativo.imagem = imagem);
+                    ativo.urlImagem = '/api/ativos/' + ativo.id + '/imagem';
                 });
 
                 this.setState({ ativos: ativos });
@@ -26,7 +25,9 @@ class App extends React.Component {
 
     render() {
         return (
-            <AtivosList ativos={this.state.ativos} />
+            <div className="App">
+                <AtivosList ativos={this.state.ativos} />
+            </div>
         )
     }
 }
@@ -57,7 +58,7 @@ class Ativo extends React.Component {
     render() {
         return (
             <tr>
-                <td>{this.props.ativo.imagem}</td>
+                <td><img src={this.props.ativo.urlImagem} width={100} /></td>
                 <td>{this.props.ativo.descricao}</td>
                 <td>{this.props.ativo.tipo.descricao}</td>
             </tr>
@@ -65,7 +66,4 @@ class Ativo extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('react')
-)
+export default App;

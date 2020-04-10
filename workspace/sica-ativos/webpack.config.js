@@ -1,24 +1,36 @@
 var path = require('path');
 
 module.exports = {
-	entry : './src/main/js/app.js',
-	devtool : 'sourcemaps',
-	cache : true,
-	mode : 'development',
-	output : {
-		path : __dirname,
-		filename : './src/main/resources/static/built/bundle.js'
+	entry: './src/main/js/index.js',
+	devtool: 'sourcemaps',
+	cache: true,
+	mode: 'development',
+	output: {
+		path: __dirname,
+		filename: './src/main/resources/static/built/bundle.js'
 	},
-	module : {
-		rules : [ {
-			test : path.join(__dirname, '.'),
-			exclude : /(node_modules)/,
-			use : [ {
-				loader : 'babel-loader',
-				options : {
-					presets : [ "@babel/preset-env", "@babel/preset-react" ]
+	devServer: {
+		inline: true,
+		contentBase: './src/main/resources/static',
+		port: 9000
+	},
+	module: {
+		rules: [{
+			test: path.join(__dirname, '.'),
+			exclude: /(node_modules)/,
+			use: [{
+				loader: 'babel-loader',
+				options: {
+					babelrc: false,
+					presets: [["@babel/preset-env", {
+						modules: false
+					}], "@babel/preset-react"]
 				}
-			} ]
-		} ]
+			}]
+		},
+		{
+			test: /\.css$/i,
+			use: ['style-loader', 'css-loader'],
+		}]
 	}
 };

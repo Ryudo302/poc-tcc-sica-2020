@@ -38,6 +38,7 @@
 					</execution>
 					<execution>
 						<id>webpack build</id>
+						<phase>prepare-package</phase>
 						<goals>
 							<goal>webpack</goal>
 						</goals>
