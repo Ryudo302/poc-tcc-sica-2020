@@ -42,6 +42,9 @@
 						<goals>
 							<goal>webpack</goal>
 						</goals>
+						<configuration>
+							<arguments>--config webpack.config.${ambiente}.js</arguments>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

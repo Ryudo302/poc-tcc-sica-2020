@@ -24,6 +24,9 @@
 	</licenses>
 
 	<properties>
+		<!-- Habilitado por profiles -->
+		<ambiente />
+
 		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -61,6 +64,20 @@
 	</build>
 
 	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<ambiente>dev</ambiente>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>prd</id>
+			<properties>
+				<ambiente>prd</ambiente>
+			</properties>
+		</profile>
+
 		<profile>
 			<id>release</id>
 			<build>

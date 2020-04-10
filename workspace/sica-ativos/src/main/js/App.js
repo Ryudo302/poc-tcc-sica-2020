@@ -1,5 +1,9 @@
+'use strict'
+
 import React from 'react';
 import api from './client';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import '../resources/static/css/App.css';
 
 class App extends React.Component {
@@ -25,9 +29,10 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="App">
+            <Container>
+            	<Button />
                 <AtivosList ativos={this.state.ativos} />
-            </div>
+            </Container>
         )
     }
 }
