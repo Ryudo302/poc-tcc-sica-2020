@@ -6,7 +6,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../resources/static/css/sb-admin-2.min.css';
 import '../resources/static/css/index.css';
 
 ReactDOM.render(
