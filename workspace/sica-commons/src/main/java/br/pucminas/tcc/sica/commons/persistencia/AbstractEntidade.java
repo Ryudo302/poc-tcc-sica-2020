@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.ativos.infra.entidade;
+package br.pucminas.tcc.sica.commons.persistencia;
 
 import java.io.Serializable;
 

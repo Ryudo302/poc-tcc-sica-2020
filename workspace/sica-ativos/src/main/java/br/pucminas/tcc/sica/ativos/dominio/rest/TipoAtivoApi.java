@@ -10,7 +10,7 @@ import br.pucminas.tcc.sica.ativos.dominio.entidade.TipoAtivo;
 import br.pucminas.tcc.sica.ativos.dominio.servico.TipoAtivoService;
 
 @RestController
-public class TipoAtivoController {
+public class TipoAtivoApi {
 
     @Autowired
     private TipoAtivoService service;

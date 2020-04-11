@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 import org.apache.commons.lang3.builder.*;
 
-import br.pucminas.tcc.sica.ativos.infra.entidade.AbstractEntidade;
+import br.pucminas.tcc.sica.commons.persistencia.AbstractEntidade;
 
 @Entity
 @Table(name = "ATIVO")

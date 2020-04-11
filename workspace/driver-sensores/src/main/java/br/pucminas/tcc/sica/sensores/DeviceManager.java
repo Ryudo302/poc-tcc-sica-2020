@@ -30,6 +30,10 @@ public class DeviceManager {
         return INSTANCE;
     }
 
+    public List<Device> getAllDevices() {
+        return Collections.unmodifiableList(devices);
+    }
+
     public List<Device> getDevices(SensorType tipo) {
         return devices
                 .stream()

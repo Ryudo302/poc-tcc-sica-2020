@@ -11,4 +11,11 @@
 	<name>SICA - Commons</name>
 	<description>Módulo contendo classes de modelo compartilhadas entre os diversos módulos.</description>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.10</version>
+		</dependency>
+	</dependencies>
 </project>
