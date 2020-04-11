@@ -1,6 +1,10 @@
 package br.pucminas.tcc.sica.monitoramento.dominio.entidade;
 
+import java.util.Set;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.pucminas.tcc.sica.commons.persistencia.AbstractEntidade;
 
@@ -21,8 +25,22 @@ public class Barragem extends AbstractEntidade<Integer> {
     @Column(name = "NUM_ALTURA_MACICO", precision = 3, nullable = false)
     private Integer alturaMacico;
 
+    @Column(name = "NUM_VOLUME", precision = 9, scale = 2, nullable = false)
+    private Double volume;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "NUM_NIVEL_EMERGENCIA", referencedColumnName = "NUM_NIVEL")
+    private NivelEmergencia nivelEmergencia;
+
     @Column(name = "ID_ATIVO", precision = 6)
     private Long idAtivo;
+
+    @OneToMany(mappedBy = "barragem", fetch = FetchType.EAGER)
+    private Set<Sensor> sensores;
+
+    @OneToMany(mappedBy = "barragem")
+    @JsonIgnore
+    private Set<RelatorioEstabilidade> relatoriosEstabilidade;
 
     @Override
     public Integer getId() {
@@ -41,7 +59,31 @@ public class Barragem extends AbstractEntidade<Integer> {
         return alturaMacico;
     }
 
+    public Double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(Double volume) {
+        this.volume = volume;
+    }
+
+    public NivelEmergencia getNivelEmergencia() {
+        return nivelEmergencia;
+    }
+
+    public void setNivelEmergencia(NivelEmergencia nivelEmergencia) {
+        this.nivelEmergencia = nivelEmergencia;
+    }
+
     public Long getIdAtivo() {
         return idAtivo;
+    }
+
+    public Set<Sensor> getSensores() {
+        return sensores;
+    }
+
+    public Set<RelatorioEstabilidade> getRelatoriosEstabilidade() {
+        return relatoriosEstabilidade;
     }
 }

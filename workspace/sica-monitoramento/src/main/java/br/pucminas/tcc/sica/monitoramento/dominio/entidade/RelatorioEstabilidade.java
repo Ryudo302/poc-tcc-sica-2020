@@ -8,7 +8,12 @@ import br.pucminas.tcc.sica.commons.persistencia.AbstractEntidade;
 
 @Entity
 @Table(name = "RELATORIO_ESTABILIDADE")
+@NamedQueries({
+        @NamedQuery(name = RelatorioEstabilidade.QUERY_FIND_ULTIMO_BY_BARRAGEM, query = "SELECT re FROM RelatorioEstabilidade re WHERE re.barragem = :barragem AND re.ultimoRelatorio = TRUE")
+})
 public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
+
+    public static final String QUERY_FIND_ULTIMO_BY_BARRAGEM = "RelatorioEstabilidade.findUltimoByBarragem";
 
     @Id
     @Column(name = "ID_RELATORIO")
@@ -33,6 +38,9 @@ public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
     @Column(name = "DTA_ULTIMA_INSPECAO", nullable = false)
     private LocalDate dataUltimaInspecao;
 
+    @Column(name = "IND_ULTIMO_RELATORIO", nullable = false)
+    private boolean ultimoRelatorio;
+
     @Override
     public Integer getId() {
         return id;
@@ -56,5 +64,9 @@ public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
 
     public LocalDate getDataUltimaInspecao() {
         return dataUltimaInspecao;
+    }
+
+    public boolean isUltimoRelatorio() {
+        return ultimoRelatorio;
     }
 }

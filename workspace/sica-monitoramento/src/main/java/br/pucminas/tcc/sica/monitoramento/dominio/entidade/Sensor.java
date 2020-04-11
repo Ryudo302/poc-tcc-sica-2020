@@ -2,6 +2,8 @@ package br.pucminas.tcc.sica.monitoramento.dominio.entidade;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.pucminas.tcc.sica.commons.persistencia.AbstractEntidade;
 
 @Entity
@@ -19,6 +21,11 @@ public class Sensor extends AbstractEntidade<Long> {
     @JoinColumn(name = "ID_TIPO_SENSOR")
     private TipoSensor tipo;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ID_BARRAGEM", nullable = false)
+    @JsonIgnore
+    private Barragem barragem;
+
     @Column(name = "ID_ATIVO", precision = 6)
     private Long idAtivo;
 
@@ -33,6 +40,10 @@ public class Sensor extends AbstractEntidade<Long> {
 
     public TipoSensor getTipo() {
         return tipo;
+    }
+
+    public Barragem getBarragem() {
+        return barragem;
     }
 
     public Long getIdAtivo() {

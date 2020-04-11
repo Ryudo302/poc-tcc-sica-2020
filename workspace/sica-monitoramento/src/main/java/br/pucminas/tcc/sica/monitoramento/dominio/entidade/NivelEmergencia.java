@@ -2,6 +2,8 @@ package br.pucminas.tcc.sica.monitoramento.dominio.entidade;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.pucminas.tcc.sica.commons.persistencia.AbstractEntidade;
 
 @Entity
@@ -16,6 +18,7 @@ public class NivelEmergencia extends AbstractEntidade<Integer> {
     private String descricao;
 
     @Override
+    @JsonIgnore
     public Integer getId() {
         return getNivel();
     }
