@@ -37,7 +37,7 @@ class App extends React.Component {
 
                     <a className="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                         <div className="sidebar-brand-icon rotate-n-15">
-                        <i className="fas fa-laugh-wink"></i>
+                        <i className="fas fa-truck"></i>
                         </div>
                         <div className="sidebar-brand-text mx-3">Ativos</div>
                     </a>
@@ -45,8 +45,8 @@ class App extends React.Component {
                     <hr className="sidebar-divider my-0" />
 
                     <li className="nav-item active">
-                        <a className="nav-link" href="index.html">
-                        <i className="fas fa-fw fa-tachometer-alt"></i>
+                        <a className="nav-link" href="/">
+                        <i className="fas fa-list-alt"></i>
                         <span>Cadastro</span></a>
                     </li>
                     

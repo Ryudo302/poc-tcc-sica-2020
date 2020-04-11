@@ -4,3 +4,6 @@
 .project
 .classpath
 src/main/resources/static/built/
+src/main/resources/templates/index.html
+/yarn-error.log
+/.vscode/
