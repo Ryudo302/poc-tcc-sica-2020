@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.monitoramento.infra.entidade;
+package br.pucminas.tcc.sica.ativos.infra.entidade;
 
 import java.io.Serializable;
 

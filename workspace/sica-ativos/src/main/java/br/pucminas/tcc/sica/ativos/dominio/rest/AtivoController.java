@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.monitoramento.dominio.rest;
+package br.pucminas.tcc.sica.ativos.dominio.rest;
 
 import java.io.*;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.pucminas.tcc.sica.monitoramento.dominio.entidade.Ativo;
-import br.pucminas.tcc.sica.monitoramento.dominio.servico.AtivoService;
+import br.pucminas.tcc.sica.ativos.dominio.entidade.Ativo;
+import br.pucminas.tcc.sica.ativos.dominio.servico.AtivoService;
 
 @RestController
 public class AtivoController {

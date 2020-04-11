@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.monitoramento.dominio.servico;
+package br.pucminas.tcc.sica.ativos.dominio.servico;
 
 import java.util.*;
 
@@ -7,8 +7,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import br.pucminas.tcc.sica.monitoramento.dominio.entidade.Ativo;
-import br.pucminas.tcc.sica.monitoramento.dominio.repo.AtivoRepository;
+import br.pucminas.tcc.sica.ativos.dominio.entidade.Ativo;
+import br.pucminas.tcc.sica.ativos.dominio.repo.AtivoRepository;
 
 @Service
 public class AtivoService {

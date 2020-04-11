@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.monitoramento.dominio.rest;
+package br.pucminas.tcc.sica.ativos.dominio.rest;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import br.pucminas.tcc.sica.monitoramento.dominio.entidade.TipoAtivo;
-import br.pucminas.tcc.sica.monitoramento.dominio.servico.TipoAtivoService;
+import br.pucminas.tcc.sica.ativos.dominio.entidade.TipoAtivo;
+import br.pucminas.tcc.sica.ativos.dominio.servico.TipoAtivoService;
 
 @RestController
 public class TipoAtivoController {

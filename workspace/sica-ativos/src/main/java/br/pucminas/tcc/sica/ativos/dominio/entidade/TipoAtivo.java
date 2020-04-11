@@ -1,10 +1,10 @@
-package br.pucminas.tcc.sica.monitoramento.dominio.entidade;
+package br.pucminas.tcc.sica.ativos.dominio.entidade;
 
 import javax.persistence.*;
 
 import org.apache.commons.lang3.builder.*;
 
-import br.pucminas.tcc.sica.monitoramento.infra.entidade.AbstractEntidade;
+import br.pucminas.tcc.sica.ativos.infra.entidade.AbstractEntidade;
 
 @Entity
 @Table(name = "TIPO_ATIVO")
