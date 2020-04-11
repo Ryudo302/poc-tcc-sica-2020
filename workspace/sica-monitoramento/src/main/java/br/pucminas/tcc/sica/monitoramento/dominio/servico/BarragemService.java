@@ -1,6 +1,6 @@
 package br.pucminas.tcc.sica.monitoramento.dominio.servico;
 
-import java.util.List;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,5 +16,10 @@ public class BarragemService {
 
     public List<Barragem> buscarTodas() {
         return barragemRepository.findAll();
+    }
+
+    public Optional<Barragem> buscarPorId(Integer id) {
+        Objects.requireNonNull(id, "id");
+        return barragemRepository.findById(id);
     }
 }

@@ -14,7 +14,7 @@ public class Sensor extends AbstractEntidade<Long> {
     @Column(name = "ID_SENSOR")
     private Long id;
 
-    @Column(name = "TXT_ID_HARDWARE", length = 10, nullable = false)
+    @Column(name = "TXT_ID_HARDWARE", length = 10, nullable = false, unique = true)
     private String idHardware;
 
     @ManyToOne(optional = false)

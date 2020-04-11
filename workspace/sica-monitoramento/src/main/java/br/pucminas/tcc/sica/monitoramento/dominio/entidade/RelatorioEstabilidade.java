@@ -9,7 +9,7 @@ import br.pucminas.tcc.sica.commons.persistencia.AbstractEntidade;
 @Entity
 @Table(name = "RELATORIO_ESTABILIDADE")
 @NamedQueries({
-        @NamedQuery(name = RelatorioEstabilidade.QUERY_FIND_ULTIMO_BY_BARRAGEM, query = "SELECT re FROM RelatorioEstabilidade re WHERE re.barragem = :barragem AND re.ultimoRelatorio = TRUE")
+        @NamedQuery(name = RelatorioEstabilidade.QUERY_FIND_ULTIMO_BY_BARRAGEM, query = "SELECT re FROM RelatorioEstabilidade re WHERE re.barragem = ?1 AND re.ultimoRelatorio = TRUE")
 })
 public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
 
@@ -50,6 +50,10 @@ public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
         return barragem;
     }
 
+    public void setBarragem(Barragem barragem) {
+        this.barragem = barragem;
+    }
+
     public NivelClassificacao getDanoPotencialAssociado() {
         return danoPotencialAssociado;
     }
@@ -68,5 +72,9 @@ public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
 
     public boolean isUltimoRelatorio() {
         return ultimoRelatorio;
+    }
+    
+    public void setUltimoRelatorio(boolean ultimoRelatorio) {
+        this.ultimoRelatorio = ultimoRelatorio;
     }
 }
