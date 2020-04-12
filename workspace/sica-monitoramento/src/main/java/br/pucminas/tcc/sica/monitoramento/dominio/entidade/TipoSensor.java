@@ -2,7 +2,7 @@ package br.pucminas.tcc.sica.monitoramento.dominio.entidade;
 
 import javax.persistence.*;
 
-import br.pucminas.tcc.sica.commons.persistencia.AbstractEntidade;
+import br.pucminas.tcc.sica.monitoramento.infra.persistencia.AbstractEntidade;
 
 @Entity
 @Table(name = "TIPO_SENSOR")

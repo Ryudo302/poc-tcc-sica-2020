@@ -1,5 +1,9 @@
 /target/
+/node_modules/
 /.settings/
 .project
 .classpath
-/node_modules/
+src/main/resources/static/built/
+src/main/resources/templates/index.html
+/yarn-error.log
+/.vscode/

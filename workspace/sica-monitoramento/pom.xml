@@ -11,6 +11,10 @@
 	<name>SICA - Monitoramento de Barragens</name>
 	<description>Módulo responsável pelo monitoramento de barragens.</description>
 
+	<properties>
+		<spring.version>2.2.6.RELEASE</spring.version>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -42,15 +46,15 @@
 							<goal>yarn</goal>
 						</goals>
 					</execution>
-					<!-- <execution>
+					<execution>
 						<id>webpack build</id>
 						<goals>
 							<goal>webpack</goal>
 						</goals>
 						<configuration>
-							<arguments>-config webpack.config.${ambiente}.js</arguments>
+							<arguments>--config webpack.config.${ambiente}.js</arguments>
 						</configuration>
-					</execution> -->
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
@@ -61,7 +65,7 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
-				<version>2.2.6.RELEASE</version>
+				<version>${spring.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -71,19 +75,29 @@
 	<dependencies>
 		<dependency>
 			<groupId>br.pucminas.tcc.sica</groupId>
-			<artifactId>sica-commons</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
-		</dependency>
-	
-		<dependency>
-			<groupId>br.pucminas.tcc.sica</groupId>
 			<artifactId>driver-sensores</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
 		</dependency>
 
 		<dependency>
@@ -94,6 +108,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
 
 		<dependency>

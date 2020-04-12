@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.pucminas.tcc.sica.commons.persistencia.AbstractEntidade;
+import br.pucminas.tcc.sica.monitoramento.infra.persistencia.AbstractEntidade;
 
 @Entity
 @Table(name = "BARRAGEM")
