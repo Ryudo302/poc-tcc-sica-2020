@@ -38,11 +38,9 @@ build:
       - .m2/repository
       - workspace/sica-parent/target/
       - workspace/driver-sensores/target/
-      - workspace/sica-commons/target/
   script:
     - mvn $MAVEN_CLI_OPTS clean install -f workspace/sica-parent/pom.xml -B -U
     - mvn $MAVEN_CLI_OPTS clean install -f workspace/driver-sensores/pom.xml -B -U
-    - mvn $MAVEN_CLI_OPTS clean install -f workspace/sica-commons/pom.xml -B -U
     - mvn $MAVEN_CLI_OPTS clean package -f workspace/sica-ativos/pom.xml -B -U
     - mvn $MAVEN_CLI_OPTS clean package -f workspace/sica-monitoramento/pom.xml -B -U
     - mvn $MAVEN_CLI_OPTS clean package -f workspace/sica-seguranca/pom.xml -B -U
