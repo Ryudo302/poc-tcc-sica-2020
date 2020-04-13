@@ -18,6 +18,9 @@
 	},
 	"homepage": "https://gitlab.com/ThiagoColbert/poc-tcc-sica-2020",
 	"dependencies": {
+		"@devexpress/dx-react-chart": "^2.6.1",
+		"@devexpress/dx-react-chart-bootstrap4": "^2.6.1",
+		"@devexpress/dx-react-core": "^2.6.1",
 		"@fortawesome/fontawesome-free": "^5.13.0",
 		"bootstrap": "^4.4.1",
 		"fetch-defaults": "^1.0.0",

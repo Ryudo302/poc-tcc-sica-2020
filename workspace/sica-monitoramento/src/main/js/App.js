@@ -1,9 +1,9 @@
 'use strict'
 
 import React from 'react';
-import api from './client';
-import stompClient from './websocketListener';
 import Container from 'react-bootstrap/Container';
+
+import BarragensList from './components/BarragensList';
 
 import '../resources/static/css/App.css';
 
@@ -11,25 +11,9 @@ class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            barragens: []
-        };
     }
 
     componentDidMount() {
-        api('/api/barragens', { method: 'GET' })
-            .then(response => response.json())
-            .then(barragens => {
-                this.setState({ barragens: barragens });
-            });
-
-        stompClient([
-            { destination: '/topic/sensor', callback: this.atualizarDadosSensor }
-        ]);
-    }
-
-    atualizarDadosSensor(message) {
-        let leitura = JSON.parse(message.body);
     }
 
     render() {
@@ -65,7 +49,7 @@ class App extends React.Component {
                     <div id="content">
 
                         <Container>
-
+                            <BarragensList />
                         </Container>
 
                     </div>

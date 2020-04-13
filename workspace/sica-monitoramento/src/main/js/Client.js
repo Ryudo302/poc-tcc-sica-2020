@@ -1,6 +1,7 @@
 'use strict';
 
-const fetchDefaults = require("fetch-defaults");
+import fetchDefaults from "fetch-defaults";
+
 const api = fetchDefaults(fetch, {
     headers: {
         Authorization: "Bearer 42",
@@ -8,4 +9,4 @@ const api = fetchDefaults(fetch, {
     }
 });
 
-module.exports = api;
+export default api;

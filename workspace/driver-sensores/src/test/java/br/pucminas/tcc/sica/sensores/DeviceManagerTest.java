@@ -17,7 +17,7 @@ public class DeviceManagerTest {
             }, type);
         });
 
-        Thread.sleep(5000L);
+        Thread.sleep(7000L);
 
         deviceManager.shutdown();
     }

@@ -9,7 +9,7 @@ import br.pucminas.tcc.sica.monitoramento.infra.persistencia.AbstractEntidade;
 @Entity
 @Table(name = "BARRAGEM")
 @NamedQueries({
-        @NamedQuery(name = Barragem.QUERY_FIND_BY_ID_WITH_SENSORES, query = "SELECT b FROM Barragem b JOIN FETCH b.sensores WHERE b.id = ?1")
+        @NamedQuery(name = Barragem.QUERY_FIND_BY_ID_WITH_SENSORES, query = "SELECT b FROM Barragem b LEFT JOIN FETCH b.sensores WHERE b.id = ?1")
 })
 public class Barragem extends AbstractEntidade<Integer> {
 
@@ -39,6 +39,7 @@ public class Barragem extends AbstractEntidade<Integer> {
     private Long idAtivo;
 
     @OneToMany(mappedBy = "barragem")
+    @OrderBy("idHardware ASC")
     private Set<Sensor> sensores;
 
     @OneToMany(mappedBy = "barragem")

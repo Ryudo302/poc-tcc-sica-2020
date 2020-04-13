@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css';
 import '../resources/static/css/sb-admin-2.min.css';
 import '../resources/static/css/index.css';
 

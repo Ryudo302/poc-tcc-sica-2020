@@ -15,12 +15,14 @@ public class DeviceManager {
 
     private DeviceManager() {
         devices = new ArrayList<>();
-        devices.add(new Device("desl01", SensorType.DISPLACEMENT));
-        devices.add(new Device("desl02", SensorType.DISPLACEMENT));
-        devices.add(new Device("incl01", SensorType.INCLINATION));
-        devices.add(new Device("incl02", SensorType.INCLINATION));
-        devices.add(new Device("nvla01", SensorType.WATER_LEVEL));
-        devices.add(new Device("pres01", SensorType.PRESSURE));
+        devices.add(new Device("desl001", SensorType.DISPLACEMENT));
+        devices.add(new Device("desl002", SensorType.DISPLACEMENT));
+        devices.add(new Device("incl001", SensorType.INCLINATION));
+        devices.add(new Device("incl002", SensorType.INCLINATION));
+        devices.add(new Device("nvla001", SensorType.WATER_LEVEL));
+        devices.add(new Device("nvla002", SensorType.WATER_LEVEL));
+        devices.add(new Device("pres001", SensorType.PRESSURE));
+        devices.add(new Device("pres002", SensorType.PRESSURE));
 
         listeners = new SensorEventListeners();
         simulator = new Simulator(devices, listeners).start();
@@ -76,6 +78,15 @@ public class DeviceManager {
         public Simulator start() {
             devices.stream().forEach(device -> {
                 threadPool.execute(() -> {
+
+                    long delayInicial = (long) (Math.random() * 2000);
+                    try {
+                        Thread.sleep(delayInicial);
+                    } catch (InterruptedException exception) {
+                        System.err.println("Erro ao executar delay inicial: " + exception);
+                        exception.printStackTrace();
+                    }
+
                     while (active) {
                         try {
                             double value = (Math.random() * 3) * (Math.random() < 0.5 ? 1 : -1);

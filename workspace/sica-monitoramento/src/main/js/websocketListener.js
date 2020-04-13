@@ -6,6 +6,7 @@ require('stompjs');
 const register = registrations => {
 	const socket = sockjs('/payroll');
 	const stompClient = Stomp.over(socket);
+	stompClient.debug = f => f;
 	stompClient.connect({}, frame => {
 		registrations.forEach(registration => {
 			stompClient.subscribe(registration.destination, registration.callback);
