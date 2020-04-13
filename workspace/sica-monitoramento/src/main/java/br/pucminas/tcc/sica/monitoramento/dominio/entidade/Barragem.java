@@ -4,13 +4,16 @@ import java.util.Set;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import br.pucminas.tcc.sica.monitoramento.infra.persistencia.AbstractEntidade;
 
 @Entity
 @Table(name = "BARRAGEM")
+@NamedQueries({
+        @NamedQuery(name = Barragem.QUERY_FIND_BY_ID_WITH_SENSORES, query = "SELECT b FROM Barragem b JOIN FETCH b.sensores WHERE b.id = ?1")
+})
 public class Barragem extends AbstractEntidade<Integer> {
+
+    public static final String QUERY_FIND_BY_ID_WITH_SENSORES = "Barragem.findByIdWithSensores";
 
     @Id
     @Column(name = "ID_BARRAGEM")
@@ -35,11 +38,10 @@ public class Barragem extends AbstractEntidade<Integer> {
     @Column(name = "ID_ATIVO", precision = 6)
     private Long idAtivo;
 
-    @OneToMany(mappedBy = "barragem", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "barragem")
     private Set<Sensor> sensores;
 
     @OneToMany(mappedBy = "barragem")
-    @JsonIgnore
     private Set<RelatorioEstabilidade> relatoriosEstabilidade;
 
     @Override

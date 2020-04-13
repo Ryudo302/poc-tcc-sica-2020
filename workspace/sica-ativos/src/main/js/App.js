@@ -1,7 +1,7 @@
 'use strict'
 
 import React from 'react';
-import api from './client';
+import api from './Client';
 import Container from 'react-bootstrap/Container';
 
 import AtivosList from './components/AtivosList';
@@ -26,7 +26,7 @@ class App extends React.Component {
                 });
 
                 this.setState({ ativos: ativos });
-            })
+            });
     }
 
     render() {
