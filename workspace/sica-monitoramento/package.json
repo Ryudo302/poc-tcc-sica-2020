@@ -24,6 +24,7 @@
 		"@fortawesome/fontawesome-free": "^5.13.0",
 		"bootstrap": "^4.4.1",
 		"fetch-defaults": "^1.0.0",
+		"open-iconic": "^1.1.1",
 		"react": "^16.5.2",
 		"react-bootstrap": "^1.0.0",
 		"react-dom": "^16.5.2",

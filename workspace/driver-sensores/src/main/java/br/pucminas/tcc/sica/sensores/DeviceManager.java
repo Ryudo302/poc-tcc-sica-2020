@@ -89,7 +89,7 @@ public class DeviceManager {
 
                     while (active) {
                         try {
-                            double value = (Math.random() * 3) * (Math.random() < 0.5 ? 1 : -1);
+                            double value = (Math.random() * 2) * (Math.random() < 0.5 ? 1 : -1);
                             listeners.fireEvent(new DeviceEvent(device, LocalDateTime.now(), value), device.getSensorType());
                             Thread.sleep(2000L);
                         } catch (InterruptedException exception) {
