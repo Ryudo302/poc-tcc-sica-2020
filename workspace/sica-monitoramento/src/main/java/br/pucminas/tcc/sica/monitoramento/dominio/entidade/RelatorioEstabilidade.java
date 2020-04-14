@@ -8,6 +8,7 @@ import br.pucminas.tcc.sica.monitoramento.infra.persistencia.AbstractEntidade;
 
 @Entity
 @Table(name = "RELATORIO_ESTABILIDADE")
+@SequenceGenerator(allocationSize = 1, name = "IdRelatorioEstabilidadeGenerator")
 @NamedQueries({
         @NamedQuery(name = RelatorioEstabilidade.QUERY_FIND_ULTIMO_BY_BARRAGEM, query = "SELECT re FROM RelatorioEstabilidade re WHERE re.barragem = ?1 AND re.ultimoRelatorio = TRUE")
 })
@@ -17,6 +18,7 @@ public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
 
     @Id
     @Column(name = "ID_RELATORIO")
+    @GeneratedValue(generator = "IdRelatorioEstabilidadeGenerator")
     private Integer id;
 
     @ManyToOne(optional = false)
@@ -58,22 +60,38 @@ public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
         return danoPotencialAssociado;
     }
 
+    public void setDanoPotencialAssociado(NivelClassificacao danoPotencialAssociado) {
+        this.danoPotencialAssociado = danoPotencialAssociado;
+    }
+
     public NivelClassificacao getCategoriaRisco() {
         return categoriaRisco;
+    }
+
+    public void setCategoriaRisco(NivelClassificacao categoriaRisco) {
+        this.categoriaRisco = categoriaRisco;
     }
 
     public ClassificacaoBarragem getClassificacao() {
         return classificacao;
     }
 
+    public void setClassificacao(ClassificacaoBarragem classificacao) {
+        this.classificacao = classificacao;
+    }
+
     public LocalDate getDataUltimaInspecao() {
         return dataUltimaInspecao;
+    }
+
+    public void setDataUltimaInspecao(LocalDate dataUltimaInspecao) {
+        this.dataUltimaInspecao = dataUltimaInspecao;
     }
 
     public boolean isUltimoRelatorio() {
         return ultimoRelatorio;
     }
-    
+
     public void setUltimoRelatorio(boolean ultimoRelatorio) {
         this.ultimoRelatorio = ultimoRelatorio;
     }

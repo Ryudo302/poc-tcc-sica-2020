@@ -1,15 +1,9 @@
 package br.pucminas.tcc.sica.monitoramento.dominio.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
 public class BarragemSimpleDto {
 
-    @JsonProperty(access = Access.READ_ONLY)
     private int id;
-    @JsonProperty(access = Access.READ_ONLY)
     private String nome;
-    @JsonProperty(access = Access.READ_ONLY)
     private int nivelEmergencia;
 
     public int getId() {

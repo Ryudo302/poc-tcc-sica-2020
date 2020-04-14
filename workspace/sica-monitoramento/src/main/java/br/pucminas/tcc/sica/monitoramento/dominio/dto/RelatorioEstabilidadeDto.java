@@ -11,14 +11,13 @@ public class RelatorioEstabilidadeDto {
 
     @JsonProperty(access = Access.READ_ONLY)
     private Integer id;
-    @JsonProperty(access = Access.READ_ONLY)
+    
+    private BarragemSimpleDto barragem;
     private NivelClassificacao danoPotencialAssociado;
-    @JsonProperty(access = Access.READ_ONLY)
     private NivelClassificacao categoriaRisco;
-    @JsonProperty(access = Access.READ_ONLY)
     private ClassificacaoBarragem classificacao;
-    @JsonProperty(access = Access.READ_ONLY)
     private LocalDate dataUltimaInspecao;
+    
     @JsonProperty(access = Access.READ_ONLY)
     private boolean ultimoRelatorio;
 
@@ -28,6 +27,14 @@ public class RelatorioEstabilidadeDto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public BarragemSimpleDto getBarragem() {
+        return barragem;
+    }
+
+    public void setBarragem(BarragemSimpleDto barragem) {
+        this.barragem = barragem;
     }
 
     public NivelClassificacao getDanoPotencialAssociado() {

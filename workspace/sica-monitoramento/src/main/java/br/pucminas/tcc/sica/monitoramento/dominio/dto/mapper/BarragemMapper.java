@@ -9,9 +9,14 @@ import br.pucminas.tcc.sica.monitoramento.dominio.entidade.Barragem;
 public interface BarragemMapper {
 
     @Mappings({
-        @Mapping(target = "nivelEmergencia", source = "nivelEmergencia.nivel")
+            @Mapping(target = "nivelEmergencia", source = "nivelEmergencia.nivel")
     })
     BarragemSimpleDto converterParaBarragemSimpleDto(Barragem barragem);
 
     BarragemDto converterParaBarragemDto(Barragem barragem);
+
+    @Mappings({
+            @Mapping(target = "nivelEmergencia.nivel", source = "nivelEmergencia")
+    })
+    Barragem converterDtoSimplesParaBarragem(BarragemSimpleDto dto);
 }

@@ -27,6 +27,10 @@ public class NivelEmergencia extends AbstractEntidade<Integer> {
         return nivel;
     }
     
+    public void setNivel(Integer nivel) {
+        this.nivel = nivel;
+    }
+    
     public String getDescricao() {
         return descricao;
     }
