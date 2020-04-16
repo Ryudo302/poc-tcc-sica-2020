@@ -3,6 +3,7 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import api from '../Client';
+import stompClient from '../websocketListener';
 import ModalEditarRelatorio from './ModalEditarRelatorio';
 import ModalVisualizarRelatorio from './ModalVisualizarRelatorio';
 import SensoresList from './SensoresList';
@@ -27,10 +28,15 @@ class Barragem extends React.Component {
         this.handleFecharModalEditarRelatorio = this.handleFecharModalEditarRelatorio.bind(this);
         this.handleFecharModalVisualizarRelatorio = this.handleFecharModalVisualizarRelatorio.bind(this);
         this.cadastrarRelatorioEstabilidade = this.cadastrarRelatorioEstabilidade.bind(this);
+        this.atualizarDadosBarragem = this.atualizarDadosBarragem.bind(this);
     }
 
     componentDidMount() {
         this.carregarDadosBarragem();
+
+        stompClient([
+            { destination: '/topic/barragem', callback: this.atualizarDadosBarragem }
+        ]);
     }
 
     carregarDadosBarragem() {
@@ -41,6 +47,22 @@ class Barragem extends React.Component {
                     barragem: barragem
                 });
             });
+    }
+
+    atualizarDadosBarragem(message) {
+        let infoBarragem = JSON.parse(message.body);
+
+        if (this.state.barragem.id === infoBarragem.id) {
+            this.setState({
+                barragem: {
+                	...this.state.barragem,
+                    nivelEmergencia: {
+                    	...this.state.barragem.nivelEmergencia,
+                        nivel: infoBarragem.nivelEmergencia
+                    }
+                },
+            });
+        }
     }
 
     buscarUltimoRelatorioEstabilidade() {

@@ -1,12 +1,8 @@
 import React from 'react';
-
-import Tab from 'react-bootstrap/Tab'
-import Tabs from 'react-bootstrap/Tabs'
-
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import api from '../Client';
-
 import Barragem from './Barragem';
-import TextWithBadge from './TextWithBadge';
 
 class BarragensList extends React.Component {
 
@@ -30,13 +26,12 @@ class BarragensList extends React.Component {
     }
 
     render() {
-    	let idPrimeiraBarragem = this.state.barragens.length ? this.state.barragens[0].id : '';
-    	
+        let idPrimeiraBarragem = this.state.barragens.length ? this.state.barragens[0].id : '';
+
         return (
             <Tabs defaultActiveKey={"barragem-" + idPrimeiraBarragem} id="barragens">
                 {this.state.barragens.map(barragem =>
-                    <Tab key={"barragem-" + barragem.id} eventKey={"barragem-" + barragem.id} title={<TextWithBadge text={barragem.nome} badgeText={barragem.nivelEmergencia} badgeVariant={this.nivelEmergenciaToBadgeVariant(barragem.nivelEmergencia)} 
-                    	badgeTitle={"Nível de Emergência: " + barragem.nivelEmergencia} />}>
+                    <Tab key={"barragem-" + barragem.id} eventKey={"barragem-" + barragem.id} title={barragem.nome}>
                         <Barragem idBarragem={barragem.id} />
                     </Tab>
                 )}
