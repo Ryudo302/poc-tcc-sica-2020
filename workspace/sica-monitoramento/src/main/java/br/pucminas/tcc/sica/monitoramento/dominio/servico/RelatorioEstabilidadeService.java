@@ -35,10 +35,12 @@ public class RelatorioEstabilidadeService {
     public void salvarRelatorio(RelatorioEstabilidade relatorio) {
         Objects.requireNonNull(relatorio, "relatorio");
 
-        if (relatorio.getId() == null) {
-            relatorio.setUltimoRelatorio(true);
-        }
+        buscarRelatorios(relatorio.getBarragem(), true).stream().forEach(ultimoRelatorioAnterior -> {
+            ultimoRelatorioAnterior.setUltimoRelatorio(false);
+            relatorioEstabilidadeRepository.save(ultimoRelatorioAnterior);
+        });
 
+        relatorio.setUltimoRelatorio(true);
         relatorioEstabilidadeRepository.save(relatorio);
     }
 }

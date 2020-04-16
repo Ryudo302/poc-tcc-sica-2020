@@ -17,6 +17,14 @@ public class NivelEmergencia extends AbstractEntidade<Integer> {
     @Column(name = "TXT_DESCRICAO", length = 256, nullable = false)
     private String descricao;
 
+    public NivelEmergencia(Integer nivel) {
+        this.nivel = nivel;
+    }
+
+    public NivelEmergencia() {
+        this(null);
+    }
+
     @Override
     @JsonIgnore
     public Integer getId() {
@@ -26,11 +34,11 @@ public class NivelEmergencia extends AbstractEntidade<Integer> {
     public Integer getNivel() {
         return nivel;
     }
-    
+
     public void setNivel(Integer nivel) {
         this.nivel = nivel;
     }
-    
+
     public String getDescricao() {
         return descricao;
     }

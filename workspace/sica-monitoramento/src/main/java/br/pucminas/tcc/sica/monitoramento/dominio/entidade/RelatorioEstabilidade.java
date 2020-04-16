@@ -27,11 +27,11 @@ public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
 
     @Column(name = "NUM_DANO_POTENCIAL_ASSOCIADO", precision = 1, nullable = false)
     @Enumerated(EnumType.ORDINAL)
-    private NivelClassificacao danoPotencialAssociado;
+    private Grau danoPotencialAssociado;
 
     @Column(name = "NUM_CATEGORIA_RISCO", precision = 1, nullable = false)
     @Enumerated(EnumType.ORDINAL)
-    private NivelClassificacao categoriaRisco;
+    private Grau categoriaRisco;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "COD_CLASSIFICACAO", nullable = false)
@@ -56,19 +56,19 @@ public class RelatorioEstabilidade extends AbstractEntidade<Integer> {
         this.barragem = barragem;
     }
 
-    public NivelClassificacao getDanoPotencialAssociado() {
+    public Grau getDanoPotencialAssociado() {
         return danoPotencialAssociado;
     }
 
-    public void setDanoPotencialAssociado(NivelClassificacao danoPotencialAssociado) {
+    public void setDanoPotencialAssociado(Grau danoPotencialAssociado) {
         this.danoPotencialAssociado = danoPotencialAssociado;
     }
 
-    public NivelClassificacao getCategoriaRisco() {
+    public Grau getCategoriaRisco() {
         return categoriaRisco;
     }
 
-    public void setCategoriaRisco(NivelClassificacao categoriaRisco) {
+    public void setCategoriaRisco(Grau categoriaRisco) {
         this.categoriaRisco = categoriaRisco;
     }
 

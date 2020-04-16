@@ -13,8 +13,8 @@ public class RelatorioEstabilidadeDto {
     private Integer id;
     
     private BarragemSimpleDto barragem;
-    private NivelClassificacao danoPotencialAssociado;
-    private NivelClassificacao categoriaRisco;
+    private Grau danoPotencialAssociado;
+    private Grau categoriaRisco;
     private ClassificacaoBarragem classificacao;
     private LocalDate dataUltimaInspecao;
     
@@ -37,19 +37,19 @@ public class RelatorioEstabilidadeDto {
         this.barragem = barragem;
     }
 
-    public NivelClassificacao getDanoPotencialAssociado() {
+    public Grau getDanoPotencialAssociado() {
         return danoPotencialAssociado;
     }
 
-    public void setDanoPotencialAssociado(NivelClassificacao danoPotencialAssociado) {
+    public void setDanoPotencialAssociado(Grau danoPotencialAssociado) {
         this.danoPotencialAssociado = danoPotencialAssociado;
     }
 
-    public NivelClassificacao getCategoriaRisco() {
+    public Grau getCategoriaRisco() {
         return categoriaRisco;
     }
 
-    public void setCategoriaRisco(NivelClassificacao categoriaRisco) {
+    public void setCategoriaRisco(Grau categoriaRisco) {
         this.categoriaRisco = categoriaRisco;
     }
 

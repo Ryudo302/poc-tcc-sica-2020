@@ -8,7 +8,7 @@ import org.springframework.web.socket.config.annotation.*;
 @EnableWebSocketMessageBroker
 public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer {
 
-    static final String MESSAGE_PREFIX = "/topic";
+    public static final String MESSAGE_PREFIX = "/topic";
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {

@@ -38,4 +38,9 @@ public class BarragemService {
         Objects.requireNonNull(id, "id");
         return barragemRepository.findById(id);
     }
+
+    public Barragem salvar(Barragem barragem) {
+        Objects.requireNonNull(barragem, "barragem");
+        return barragemRepository.save(barragem);
+    }
 }

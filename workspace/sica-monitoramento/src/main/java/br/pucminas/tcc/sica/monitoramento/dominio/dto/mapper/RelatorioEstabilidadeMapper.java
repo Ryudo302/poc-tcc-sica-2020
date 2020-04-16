@@ -10,5 +10,5 @@ public interface RelatorioEstabilidadeMapper {
 
     RelatorioEstabilidadeDto converterRelatorioEstabilidadeParaDto(RelatorioEstabilidade relatorio);
 
-    RelatorioEstabilidade converterDtoParaRelatorioEstabilidade(RelatorioEstabilidadeDto relatorio);
+    RelatorioEstabilidade converterDtoParaRelatorioEstabilidade(RelatorioEstabilidadeDto dto);
 }

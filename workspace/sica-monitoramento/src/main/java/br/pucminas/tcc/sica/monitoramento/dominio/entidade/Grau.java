@@ -1,6 +1,6 @@
 package br.pucminas.tcc.sica.monitoramento.dominio.entidade;
 
-public enum NivelClassificacao {
+public enum Grau {
 
     ALTO,
 
