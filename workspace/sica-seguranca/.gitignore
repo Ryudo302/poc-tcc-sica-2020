@@ -1,4 +1,12 @@
 /target/
+/node_modules/
 /.settings/
 .project
 .classpath
+src/main/generated/
+src/test/generated/
+src/main/resources/static/built/
+src/main/resources/templates/index.html
+/yarn-error.log
+/.vscode/
+/.factorypath
