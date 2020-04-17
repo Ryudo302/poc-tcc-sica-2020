@@ -13,7 +13,11 @@ public class MonitoramentoApplication {
         SpringApplication.run(MonitoramentoApplication.class, args);
     }
 
-    // @see https://stackoverflow.com/a/54220104/3228529
+    /*
+     * Permite que a aplicação seja encerrada corretamente ao pressionar a tecla ENTER no console.
+     * 
+     * @see https://stackoverflow.com/a/54220104/3228529
+     */
     @Bean
     public ApplicationRunner systemExitListener() {
         return args -> {

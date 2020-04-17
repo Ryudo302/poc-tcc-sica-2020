@@ -1,5 +1,7 @@
 package br.pucminas.tcc.sica.monitoramento.dominio.dto;
 
+import org.apache.commons.lang3.builder.*;
+
 public class BarragemSimpleDto {
 
     private int id;
@@ -28,5 +30,14 @@ public class BarragemSimpleDto {
 
     public void setNivelEmergencia(int nivelEmergencia) {
         this.nivelEmergencia = nivelEmergencia;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
+                .append("id", id)
+                .append("nome", nome)
+                .append("nivelEmergencia", nivelEmergencia)
+                .toString();
     }
 }

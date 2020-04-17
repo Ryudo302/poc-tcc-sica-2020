@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.monitoramento.dominio.rest;
+package br.pucminas.tcc.sica.monitoramento.aplicacao.api;
 
 import java.util.List;
 
