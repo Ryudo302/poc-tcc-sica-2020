@@ -10,3 +10,4 @@ src/main/resources/templates/index.html
 /yarn-error.log
 /.vscode/
 /.factorypath
+/logs/

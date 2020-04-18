@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.*;
 
 import br.pucminas.tcc.sica.monitoramento.dominio.dto.*;
 import br.pucminas.tcc.sica.monitoramento.dominio.dto.mapper.BarragemMapper;
@@ -39,6 +40,7 @@ public class BarragemService {
         return barragemRepository.findById(id);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     public Barragem salvar(Barragem barragem) {
         Objects.requireNonNull(barragem, "barragem");
         return barragemRepository.save(barragem);

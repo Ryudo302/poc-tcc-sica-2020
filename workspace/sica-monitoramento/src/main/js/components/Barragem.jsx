@@ -112,44 +112,42 @@ class Barragem extends React.Component {
         let barragem = this.state.barragem;
 
         return (
-            <>
-                <Card>
-                    <Card.Body>
-                        {barragem.nivelEmergencia
-                            ? <span className={'float-right text-center text-light nivel-emergencia nivel-emergencia-' + barragem.nivelEmergencia.nivel} style={{ fontSize: 'xxx-large' }}
-                                title={barragem.nivelEmergencia.descricao}>
-                                <p style={{ position: 'relative', right: '0.8rem' }}>{barragem.nivelEmergencia.nivel}</p>
-                            </span>
-                            : ''}
-                        <Card.Title>{barragem.nome}</Card.Title>
-                        <Card.Text>
-                            <strong>Capacidade total:</strong> {numberFormatter.format(barragem.capacidadeTotal)} m³<br />
-                            <strong>Volume atual:</strong> {numberFormatter.format(barragem.volume)} m³<br />
-                            <strong>Altura maciço:</strong> {barragem.alturaMacico} m<br /><br />
-                            <Button variant="secondary" size="sm" onClick={this.buscarUltimoRelatorioEstabilidade}><i className="fas fa-tasks"></i> Último Relatório de Estabilidade</Button>
-                            {' '}
-                            <Button variant="primary" size="sm" onClick={this.cadastrarRelatorioEstabilidade}><i className="fas fa-plus"></i> Registrar Relatório de Estabilidade</Button>
-                        </Card.Text>
+            <Card>
+                <Card.Body>
+                    {barragem.nivelEmergencia
+                        ? <span className={'float-right text-center text-light nivel-emergencia nivel-emergencia-' + barragem.nivelEmergencia.nivel} style={{ fontSize: 'xxx-large' }}
+                            title={barragem.nivelEmergencia.descricao}>
+                            <p style={{ position: 'relative', right: '0.8rem' }}>{barragem.nivelEmergencia.nivel}</p>
+                        </span>
+                        : ''}
+                    <Card.Title>{barragem.nome}</Card.Title>
+                    <Card.Text>
+                        <strong>Capacidade total:</strong> {numberFormatter.format(barragem.capacidadeTotal)} m³<br />
+                        <strong>Volume atual:</strong> {numberFormatter.format(barragem.volume)} m³<br />
+                        <strong>Altura maciço:</strong> {barragem.alturaMacico} m<br /><br />
+                        <Button variant="secondary" size="sm" onClick={this.buscarUltimoRelatorioEstabilidade}><i className="fas fa-tasks"></i> Último Relatório de Estabilidade</Button>
+                        {' '}
+                        <Button variant="primary" size="sm" onClick={this.cadastrarRelatorioEstabilidade}><i className="fas fa-plus"></i> Registrar Relatório de Estabilidade</Button>
+                    </Card.Text>
 
-                        {this.state.relatorioEstabilidade
-                            ? <ModalVisualizarRelatorio relatorio={this.state.relatorioEstabilidade} onClose={this.handleFecharModalVisualizarRelatorio} />
-                            : ''}
+                    {this.state.relatorioEstabilidade
+                        ? <ModalVisualizarRelatorio relatorio={this.state.relatorioEstabilidade} onClose={this.handleFecharModalVisualizarRelatorio} />
+                        : ''}
 
-                        {this.state.incluindoRelatorio
-                            ? <ModalEditarRelatorio barragem={barragem} onClose={this.handleFecharModalEditarRelatorio} />
-                            : ''}
+                    {this.state.incluindoRelatorio
+                        ? <ModalEditarRelatorio barragem={barragem} onClose={this.handleFecharModalEditarRelatorio} />
+                        : ''}
 
-                        {this.state.mensagem ?
-                            <Alert variant="warning" onClose={this.handleFecharMensagem} dismissible>
-                                <p>{this.state.mensagem}</p>
-                            </Alert>
-                            : ''
-                        }
+                    {this.state.mensagem ?
+                        <Alert variant="warning" onClose={this.handleFecharMensagem} dismissible>
+                            <p>{this.state.mensagem}</p>
+                        </Alert>
+                        : ''
+                    }
 
-                        <SensoresList sensores={barragem.sensores} />
-                    </Card.Body>
-                </Card>
-            </>
+                    <SensoresList sensores={barragem.sensores} />
+                </Card.Body>
+            </Card>
         )
     }
 }

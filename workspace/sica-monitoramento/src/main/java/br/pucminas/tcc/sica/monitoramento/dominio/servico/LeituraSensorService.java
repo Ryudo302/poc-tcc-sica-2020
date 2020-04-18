@@ -48,10 +48,14 @@ public class LeituraSensorService {
         Integer nivelEmergenciaAtual = barragem.getNivelEmergencia().getNivel();
         Integer nivelEmergenciaNovo = nivelEmergenciaAtual;
 
-        if (leituraSensor.getVariacao() >= 1.5 && nivelEmergenciaAtual > 0) {
-            nivelEmergenciaNovo--;
-        } else if (leituraSensor.getVariacao() >= 1.5 && nivelEmergenciaAtual < 3) {
-            nivelEmergenciaNovo++;
+        if (leituraSensor.getVariacao() >= 1.5) {
+            if (nivelEmergenciaAtual == 0) {
+                nivelEmergenciaNovo++;
+            } else if (nivelEmergenciaAtual == 3) {
+                nivelEmergenciaNovo--;
+            } else {
+                nivelEmergenciaNovo += (Math.random() < 0.5 ? 1 : -1);
+            }
         }
         // fim do código simulador
 

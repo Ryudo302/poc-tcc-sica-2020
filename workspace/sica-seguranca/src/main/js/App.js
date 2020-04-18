@@ -2,10 +2,9 @@
 
 import React from 'react';
 import Container from 'react-bootstrap/Container';
-
-import MenuLateral from './components/MenuLateral';
-
 import '../resources/static/css/App.css';
+import BarragensList from './components/BarragensList';
+import MenuLateral from './components/MenuLateral';
 
 class App extends React.Component {
 
@@ -27,6 +26,7 @@ class App extends React.Component {
                     <div id="content">
 
                         <Container fluid>
+                            <BarragensList />
                         </Container>
 
                     </div>

@@ -10,3 +10,11 @@ INSERT INTO seguranca.procedimento_seguranca (id_procedimento,txt_descricao,txt_
 INSERT INTO seguranca.procedimento_seguranca (id_procedimento,txt_descricao,txt_nome_procedimento) VALUES (2,'Acionar sirenes de evacuação da Zona de Autossalvamento (ZAS)','Sirenes - ZAS');
 INSERT INTO seguranca.procedimento_seguranca (id_procedimento,txt_descricao,txt_nome_procedimento) VALUES (3,'Acionar sirenes de evacuação de toda a área - Zona de Autossalvamento (ZAS) e Zona de Segurança Secundária (ZSS)','Sirenes - Todas');
 INSERT INTO seguranca.procedimento_seguranca (id_procedimento,txt_descricao,txt_nome_procedimento) VALUES (4,'Comunicar a diretoria da empresa sobre a situação da barragem','Comunicar diretoria');
+
+INSERT INTO seguranca.procedimento_nivel_emergencia (num_nivel_emergencia, id_procedimento) VALUES (1, 1);
+INSERT INTO seguranca.procedimento_nivel_emergencia (num_nivel_emergencia, id_procedimento) VALUES (2, 1);
+INSERT INTO seguranca.procedimento_nivel_emergencia (num_nivel_emergencia, id_procedimento) VALUES (2, 2);
+INSERT INTO seguranca.procedimento_nivel_emergencia (num_nivel_emergencia, id_procedimento) VALUES (3, 1);
+INSERT INTO seguranca.procedimento_nivel_emergencia (num_nivel_emergencia, id_procedimento) VALUES (3, 2);
+INSERT INTO seguranca.procedimento_nivel_emergencia (num_nivel_emergencia, id_procedimento) VALUES (3, 3);
+INSERT INTO seguranca.procedimento_nivel_emergencia (num_nivel_emergencia, id_procedimento) VALUES (3, 4);
