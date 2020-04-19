@@ -12,10 +12,19 @@
 	<description>Módulo de gestão de ativos da empresa.</description>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>

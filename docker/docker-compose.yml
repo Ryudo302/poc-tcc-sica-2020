@@ -5,35 +5,78 @@ services:
     container_name: rabbitmq1
     hostname: rabbitmq1
     ports:
-      - "5672:5672"
+      - "5672"
       - "15672:15672"
-    network_mode: "bridge"
+    networks:
+      - sica-network
     environment:
      - RABBITMQ_DEFAULT_USER=guest
      - RABBITMQ_DEFAULT_PASS=guest
   mongo:
-    image: mongo
+    build: ./mongo
     environment:
-      MONGO_INITDB_ROOT_USERNAME: sicaadmin
+      MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: sica
+      MONGO_INITDB_USERNAME: sicaMonitoramento
+      MONGO_INITDB_PASSWORD: sica
+      MONGO_INITDB_DATABASE: sica
     ports:
-      - "27017:27017"
-    volumes:
-      - D:\\Desenv\\mongo_data_docker:/data/db
+      - "27017"
+    networks:
+      - sica-network
   postgres:
     build: ./postgresql
-    image: sica/postgresql
     restart: always
     ports:
-      - "5432:5432"
-    volumes:
-      - D:\\Desenv\\pg_data_docker:/var/lib/postgresql/data
-      - ./postgresql/postgresql.conf:/etc/postgresql/postgresql.conf
+      - "5432"
+    networks:
+      - sica-network
+    #volumes:
+      #- postgresdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=sica
       - POSTGRES_DB=sica
       - POSTGRES_INITDB_ARGS=--locale=pt_BR.UTF8
       - TZ=America/Sao_Paulo
-volumes:
-  sicafiles: {}
+  sica-ativos:
+    build: ../workspace/sica-ativos
+    ports:
+      - "8090:8080"
+    depends_on:
+      - postgres
+    networks:
+      - sica-network
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/sica
+  sica-monitoramento:
+    build: ../workspace/sica-monitoramento
+    ports:
+      - "8091:8080"
+    depends_on:
+      - rabbitmq
+      - mongo
+      - postgres
+    networks:
+      - sica-network
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/sica
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_DATA_MONGODB_URI=mongodb://sicaMonitoramento:sica@mongo:27017/sica?authSource=admin&authMechanism=SCRAM-SHA-1
+  sica-seguranca:
+    build: ../workspace/sica-seguranca
+    ports:
+      - "8092:8080"
+    depends_on:
+      - rabbitmq
+      - postgres
+    networks:
+      - sica-network
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/sica
+      - SPRING_RABBITMQ_HOST=rabbitmq
+      - SPRING_RABBITMQ_PORT=5672
+networks:
+    sica-network:
+        driver: bridge

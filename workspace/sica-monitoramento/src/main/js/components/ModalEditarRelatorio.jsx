@@ -58,7 +58,7 @@ class ModalEditarRelatorio extends React.Component {
                     <Modal.Title>Relatório de estabilidade de barragem</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={this.salvarRelatorio} noValidate>
+                    <Form onSubmit={this.salvarRelatorio}>
                         <Form.Group controlId="danoPotencialAssociado">
                             <Form.Label>Dano Potencial Associado (DPA)</Form.Label>
                             <Form.Control required as="select" custom>
