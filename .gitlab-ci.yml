@@ -52,7 +52,6 @@ docker:
   image: docker:stable
   stage: deploy
   variables:
-    CONTAINER_IMAGE_BASE: $DOCKER_REGISTRY/$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
     # When using dind service we need to instruct docker, to talk with the
     # daemon started inside of the service. The daemon is available with
     # a network connection instead of the default /var/run/docker.sock socket.
@@ -72,6 +71,8 @@ docker:
   before_script:
     - docker --version
     - echo $DOCKER_REGISTRY_PASSWORD | docker login $DOCKER_REGISTRY -u $GITLAB_USER_LOGIN --password-stdin
+    - export NAMESPACE="$(echo "${CI_PROJECT_NAMESPACE}" | tr A-Z a-z)"
+    - export CONTAINER_IMAGE_BASE=${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
   script:
     - docker pull $CONTAINER_IMAGE_BASE/sica-ativos:latest || true
     - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-ativos:latest --tag $CONTAINER_IMAGE_BASE/sica-ativos:latest --file workspace/sica-ativos/Dockerfile .
