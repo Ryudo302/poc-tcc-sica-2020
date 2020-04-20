@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.ativos.dominio.rest;
+package br.pucminas.tcc.sica.ativos.aplicacao.api;
 
 import java.io.*;
 import java.util.List;

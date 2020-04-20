@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.ativos.controller;
+package br.pucminas.tcc.sica.ativos.aplicacao.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
