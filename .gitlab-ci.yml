@@ -75,13 +75,13 @@ docker:
     - export CONTAINER_IMAGE_BASE=${DOCKER_REGISTRY}/${NAMESPACE}/${CI_PROJECT_NAME}
   script:
     - docker pull $CONTAINER_IMAGE_BASE/sica-ativos:latest || true
-    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-ativos:latest --tag $CONTAINER_IMAGE_BASE/sica-ativos:latest --file workspace/sica-ativos/Dockerfile .
+    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-ativos:latest --tag $CONTAINER_IMAGE_BASE/sica-ativos:latest ./workspace/sica-ativos/
     - docker push $CONTAINER_IMAGE_BASE/sica-ativos:latest
     - docker pull $CONTAINER_IMAGE_BASE/sica-monitoramento:latest || true
-    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-monitoramento:latest --tag $CONTAINER_IMAGE_BASE/sica-monitoramento:latest --file workspace/sica-monitoramento/Dockerfile .
+    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-monitoramento:latest --tag $CONTAINER_IMAGE_BASE/sica-monitoramento:latest ./workspace/sica-monitoramento/
     - docker push $CONTAINER_IMAGE_BASE/sica-monitoramento:latest
     - docker pull $CONTAINER_IMAGE_BASE/sica-seguranca:latest || true
-    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-seguranca:latest --tag $CONTAINER_IMAGE_BASE/sica-seguranca:latest --file workspace/sica-seguranca/Dockerfile .
+    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-seguranca:latest --tag $CONTAINER_IMAGE_BASE/sica-seguranca:latest ./workspace/sica-seguranca/
     - docker push $CONTAINER_IMAGE_BASE/sica-seguranca:latest
   only:
     - master
