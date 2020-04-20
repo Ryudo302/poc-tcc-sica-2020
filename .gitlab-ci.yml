@@ -72,7 +72,7 @@ docker:
     - docker --version
     - echo $DOCKER_REGISTRY_PASSWORD | docker login $DOCKER_REGISTRY -u $GITLAB_USER_LOGIN --password-stdin
     - export NAMESPACE="$(echo "${CI_PROJECT_NAMESPACE}" | tr A-Z a-z)"
-    - export CONTAINER_IMAGE_BASE=${DOCKER_REGISTRY}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}
+    - export CONTAINER_IMAGE_BASE=${DOCKER_REGISTRY}/${NAMESPACE}/${CI_PROJECT_NAME}
   script:
     - docker pull $CONTAINER_IMAGE_BASE/sica-ativos:latest || true
     - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-ativos:latest --tag $CONTAINER_IMAGE_BASE/sica-ativos:latest --file workspace/sica-ativos/Dockerfile .
