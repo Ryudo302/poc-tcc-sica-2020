@@ -83,5 +83,11 @@ docker:
     - docker pull $CONTAINER_IMAGE_BASE/sica-seguranca:latest || true
     - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-seguranca:latest --tag $CONTAINER_IMAGE_BASE/sica-seguranca:latest ./workspace/sica-seguranca/
     - docker push $CONTAINER_IMAGE_BASE/sica-seguranca:latest
+    - docker pull $CONTAINER_IMAGE_BASE/mongodb:latest || true
+    - docker build --cache-from $CONTAINER_IMAGE_BASE/mongodb:latest --tag $CONTAINER_IMAGE_BASE/mongodb:latest ./docker/mongo/
+    - docker push $CONTAINER_IMAGE_BASE/mongodb:latest
+    - docker pull $CONTAINER_IMAGE_BASE/postgresql:latest || true
+    - docker build --cache-from $CONTAINER_IMAGE_BASE/postgresql:latest --tag $CONTAINER_IMAGE_BASE/postgresql:latest ./docker/postgresql/
+    - docker push $CONTAINER_IMAGE_BASE/postgresql:latest
   only:
     - master
