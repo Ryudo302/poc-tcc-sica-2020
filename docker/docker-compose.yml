@@ -42,7 +42,7 @@ services:
   sica-ativos:
     build: ../workspace/sica-ativos
     ports:
-      - "8090:8080"
+      - "8091:8080"
     depends_on:
       - postgres
     networks:
@@ -52,7 +52,7 @@ services:
   sica-monitoramento:
     build: ../workspace/sica-monitoramento
     ports:
-      - "8091:8080"
+      - "8092:8080"
     depends_on:
       - rabbitmq
       - mongo
@@ -67,7 +67,7 @@ services:
   sica-seguranca:
     build: ../workspace/sica-seguranca
     ports:
-      - "8092:8080"
+      - "8093:8080"
     depends_on:
       - rabbitmq
       - postgres
@@ -77,6 +77,20 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/sica
       - SPRING_RABBITMQ_HOST=rabbitmq
       - SPRING_RABBITMQ_PORT=5672
+  sica-portal:
+    build: ../workspace/sica-portal-web
+    ports:
+      - "8090:8080"
+    depends_on:
+      - sica-ativos
+      - sica-monitoramento
+      - sica-seguranca
+    networks:
+      - sica-network
+    environment:
+      - MODULO_URL_ATIVOS=http://sica-ativos:8080/
+      - MODULO_URL_MONITORAMENTO=http://sica-monitoramento:8080/
+      - MODULO_URL_SEGURANCA=http://sica-seguranca:8080/
 networks:
     sica-network:
         driver: bridge
