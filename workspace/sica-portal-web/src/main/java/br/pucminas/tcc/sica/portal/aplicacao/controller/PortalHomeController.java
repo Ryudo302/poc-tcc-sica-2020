@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PortalHomeController {
 
-    @RequestMapping(value = "/")
+    @RequestMapping(value = "{path:^(?!api|.+\\..+).*$}")
     public String index() {
         return "index";
     }
