@@ -60,17 +60,20 @@ class PortalApp extends React.Component {
 
         return (
             <div key={this.props.location.pathname}>
-                <Navbar className="bg-gradient-primary" bg="primary" variant="dark" sticky="top">
+                <Navbar collapseOnSelect expand="md" className="bg-gradient-primary" bg="primary" variant="dark" sticky="top">
                     <Navbar.Brand href="/">SICA</Navbar.Brand>
-                    <Nav className="mr-auto">
-                        {this.state.modulos.map(modulo =>
-                            <Nav.Link key={modulo.id} onClick={() => this.alterarModulo(modulo)}>{modulo.nome}</Nav.Link>
-                        )}
-                    </Nav>
-                    <Nav className="justify-content-end">
-                        {!usuarioLogado && <Nav.Link as={Link} to="/login">Login</Nav.Link>}
-                        {usuarioLogado && <Nav.Link as={Link} to="/logout" onClick={this.logout}>Logout</Nav.Link>}
-                    </Nav>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="mr-auto">
+                            {this.state.modulos.map(modulo =>
+                                <Nav.Link key={modulo.id} onClick={() => this.alterarModulo(modulo)}>{modulo.nome}</Nav.Link>
+                            )}
+                        </Nav>
+                        <Nav className="justify-content-end">
+                            {!usuarioLogado && <Nav.Link as={Link} to="/login">Login</Nav.Link>}
+                            {usuarioLogado && <Nav.Link as={Link} to="/logout" onClick={this.logout}>Logout</Nav.Link>}
+                        </Nav>
+                    </Navbar.Collapse>
                 </Navbar>
                 <Switch>
                     <Route path="/home" exact component={Home} />

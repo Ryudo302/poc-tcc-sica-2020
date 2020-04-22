@@ -44,6 +44,18 @@ module.exports = {
 	            }
 	          }
 	        ]
+		},
+		{
+	        test: /\.(png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+	        use: [
+	          {
+	            loader: 'file-loader',
+	            options: {
+	              name: '[name].[ext]',
+	              outputPath: 'img/'
+	            }
+	          }
+	        ]
 		}]
 	},
 	resolve: {

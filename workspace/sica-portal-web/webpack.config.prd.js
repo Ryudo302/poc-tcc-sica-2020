@@ -34,13 +34,25 @@ module.exports = {
 			use: ['style-loader', 'css-loader'],
 		},
 		{
-	        test: /\.(woff(2)?|ttf|eot|svg|otf)(\?v=\d+\.\d+\.\d+)?$/,
+	        test: /\.(woff(2)?|ttf|eot|svg|otf|)(\?v=\d+\.\d+\.\d+)?$/,
 	        use: [
 	          {
 	            loader: 'file-loader',
 	            options: {
 	              name: '[name].[ext]',
 	              outputPath: 'fonts/'
+	            }
+	          }
+	        ]
+		}, 
+		{
+	        test: /\.(png|gif|jpg)(\?v=\d+\.\d+\.\d+)?$/,
+	        use: [
+	          {
+	            loader: 'file-loader',
+	            options: {
+	              name: '[name].[ext]',
+	              outputPath: 'img/'
 	            }
 	          }
 	        ]

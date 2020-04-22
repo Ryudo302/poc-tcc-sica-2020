@@ -1,3 +1,36 @@
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .img-overlayed {
+        width: 55%;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .img-overlayed {
+        width: 35%;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .img-overlayed {
+        width: 30%;
+    }
+}
+
+.img-overlayed {
+    align-self: center;
+    opacity: 0.4;
+}
+
 .full-window {
+    min-height: calc(100vh - 54px);
+}
+
+.vertical-center {
+    align-items: center;
+    display: flex;
+    min-height: 100%;
     min-height: calc(100vh - 54px);
 }
