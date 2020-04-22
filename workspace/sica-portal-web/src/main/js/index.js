@@ -6,11 +6,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../resources/static/css/index.css';
 import '../resources/static/css/sb-admin-2.min.css';
+import '../resources/static/img/background.png';
 import App from './App';
 
 ReactDOM.render(
         <React.StrictMode>
-            <App />
+            <div id="background-overlay">
+                <App />
+            </div>
         </React.StrictMode>,
     document.getElementById('app')
 );

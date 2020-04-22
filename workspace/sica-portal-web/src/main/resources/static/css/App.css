@@ -1,27 +1,39 @@
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-    .img-overlayed {
-        width: 55%;
-    }
-}
-
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-    .img-overlayed {
-        width: 35%;
+    .logo {
+        width: 35% !important;
     }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-    .img-overlayed {
-        width: 30%;
+    .logo {
+        width: 30% !important;
     }
 }
 
-.img-overlayed {
+.logo {
     align-self: center;
+    margin-top: 1rem;
+    width: 55%;
+}
+
+.logo-overlay {
     opacity: 0.4;
+}
+
+.card-login::after {
+    background-color: #be8e44;
+    content: "";
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }
 
 .full-window {

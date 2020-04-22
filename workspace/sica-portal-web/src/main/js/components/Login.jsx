@@ -52,23 +52,23 @@ class Login extends React.Component {
                 <Container>
                     <Row className="justify-content-center">
                         <Col md={8}>
-                            <Card>
-                                <Card.Img src={logo} alt="Logo" className="img-overlayed" />
-                                <Card.ImgOverlay>
+                            <Card className="card-login bg-transparent border-dark text-light">
+                                <Card.Img src={logo} alt="Logo do sistema" className="logo" />
+                                <Card.Body>
                                     <Card.Title>Login</Card.Title>
 
                                     <Form onSubmit={this.efetuarLogin}>
                                         <Form.Group as={Row} controlId="username">
                                             <Form.Label column sm={12} lg={2}>Usuário</Form.Label>
                                             <Col sm={12} lg={10}>
-                                                <Form.Control type="text" name="username" placeholder="usuario" value={this.state.username} onChange={this.handleChangeInput} />
+                                                <Form.Control type="text" name="username" value={this.state.username} onChange={this.handleChangeInput} />
                                             </Col>
                                         </Form.Group>
 
                                         <Form.Group as={Row} controlId="password">
                                             <Form.Label column sm={12} lg={2}>Senha</Form.Label>
                                             <Col sm={12} lg={10}>
-                                                <Form.Control type="password" name="password" placeholder="******" value={this.state.password} onChange={this.handleChangeInput} />
+                                                <Form.Control type="password" name="password" value={this.state.password} onChange={this.handleChangeInput} />
                                             </Col>
                                         </Form.Group>
 
@@ -81,7 +81,7 @@ class Login extends React.Component {
 
                                     {this.state.loginFalhou && <div className="alert alert-warning">Invalid Credentials</div>}
                                     {this.state.loginSucesso && <div>Login Sucessful</div>}
-                                </Card.ImgOverlay>
+                                </Card.Body>
                             </Card>
                         </Col>
                     </Row>
