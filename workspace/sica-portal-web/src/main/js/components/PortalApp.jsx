@@ -57,6 +57,9 @@ class PortalApp extends React.Component {
 
     render() {
         const usuarioLogado = AuthService.isUserLoggedIn();
+        
+        let usuario = AuthService.getLoggedInUsername();
+        usuario && (usuario = usuario.charAt(0).toUpperCase() + usuario.slice(1))
 
         return (
             <div key={this.props.location.pathname}>
@@ -71,7 +74,7 @@ class PortalApp extends React.Component {
                         </Nav>
                         <Nav className="justify-content-end">
                             {!usuarioLogado && <Nav.Link as={Link} to="/login">Login</Nav.Link>}
-                            {usuarioLogado && <Nav.Link as={Link} to="/logout" onClick={this.logout}>Logout</Nav.Link>}
+                            {usuarioLogado && <Nav.Link as={Link} to="/logout" onClick={this.logout}>{usuario} (Logout)</Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

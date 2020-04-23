@@ -29,7 +29,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private AuthenticationEntryPoint authenticationEntryPoint() {
         return (request, response, exception) -> {
-            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, exception.getMessage());
+            if (request.getRequestURI().matches("^/(?!api|.+\\\\..+).*$")) {
+                response.sendRedirect("/");
+            } else {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, exception.getMessage());
+            }
         };
     }
 

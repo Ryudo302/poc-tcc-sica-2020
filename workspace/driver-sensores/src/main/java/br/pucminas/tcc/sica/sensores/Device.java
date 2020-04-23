@@ -6,10 +6,16 @@ public class Device {
 
     private final String id;
     private final SensorType sensorType;
+    private boolean debug;
 
-    public Device(String id, SensorType sensorType) {
+    public Device(String id, SensorType sensorType, boolean debug) {
         this.id = id;
         this.sensorType = sensorType;
+        this.debug = debug;
+    }
+
+    public Device(String id, SensorType sensorType) {
+        this(id, sensorType, false);
     }
 
     public String getId() {
@@ -18,6 +24,14 @@ public class Device {
 
     public SensorType getSensorType() {
         return sensorType;
+    }
+
+    public boolean isDebug() {
+        return debug;
+    }
+
+    public void setDebug(boolean debug) {
+        this.debug = debug;
     }
 
     @Override
@@ -36,6 +50,7 @@ public class Device {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("id", id)
                 .append("sensorType", sensorType)
+                .append("debug", debug)
                 .toString();
     }
 }

@@ -29,7 +29,7 @@ public class BarragemEventConsumer {
         Barragem barragem = barragemService.buscarPorId(barragemDto.getId())
                 .orElseGet(() -> criarNovaBarragem(barragemDto));
 
-        LOGGER.debug("Barragem {} mudou nível de segurança para {}", barragem.getNome(), barragemDto.getNivelEmergencia());
+        LOGGER.info("Barragem {} mudou nível de segurança para {}", barragem.getNome(), barragemDto.getNivelEmergencia());
 
         barragem.setNivelEmergencia(new NivelEmergencia(barragemDto.getNivelEmergencia()));
         barragem.setDataUltimaAtualizacao(LocalDateTime.now());

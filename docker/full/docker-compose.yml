@@ -13,7 +13,7 @@ services:
      - RABBITMQ_DEFAULT_USER=guest
      - RABBITMQ_DEFAULT_PASS=guest
   mongo:
-    build: ./mongo
+    build: ../mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=sica
@@ -25,7 +25,7 @@ services:
     networks:
       - sica-network
   postgres:
-    build: ./postgresql
+    build: ../postgresql
     restart: always
     ports:
       - "5432"
@@ -39,20 +39,13 @@ services:
       - POSTGRES_DB=sica
       - POSTGRES_INITDB_ARGS=--locale=pt_BR.UTF8
       - TZ=America/Sao_Paulo
-  sica-ativos:
-    build: ../workspace/sica-ativos
+  sica-web:
+    build: .
     ports:
       - "8090:8080"
-    depends_on:
-      - postgres
-    networks:
-      - sica-network
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/sica
-  sica-monitoramento:
-    build: ../workspace/sica-monitoramento
-    ports:
-      - "8091:8080"
+      - "8091:8081"
+      - "8092:8082"
+      - "8093:8083"
     depends_on:
       - rabbitmq
       - mongo
@@ -64,33 +57,9 @@ services:
       - SPRING_RABBITMQ_HOST=rabbitmq
       - SPRING_RABBITMQ_PORT=5672
       - SPRING_DATA_MONGODB_URI=mongodb://sicaMonitoramento:sica@mongo:27017/sica?authSource=admin&authMechanism=SCRAM-SHA-1
-  sica-seguranca:
-    build: ../workspace/sica-seguranca
-    ports:
-      - "8092:8080"
-    depends_on:
-      - rabbitmq
-      - postgres
-    networks:
-      - sica-network
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/sica
-      - SPRING_RABBITMQ_HOST=rabbitmq
-      - SPRING_RABBITMQ_PORT=5672
-  sica-portal:
-    build: ../workspace/sica-portal-web
-    ports:
-      - "8080:8080"
-    depends_on:
-      - sica-ativos
-      - sica-monitoramento
-      - sica-seguranca
-    networks:
-      - sica-network
-    environment:
-      - MODULO_URL_ATIVOS=http://192.168.99.100:8090/
-      - MODULO_URL_MONITORAMENTO=http://192.168.99.100:8091/
+      - MODULO_URL_ATIVOS=http://192.168.99.100:8091/
       - MODULO_URL_SEGURANCA=http://192.168.99.100:8092/
+      - MODULO_URL_MONITORAMENTO=http://192.168.99.100:8093/
 networks:
     sica-network:
         driver: bridge

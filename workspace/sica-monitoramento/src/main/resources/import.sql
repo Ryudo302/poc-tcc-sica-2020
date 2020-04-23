@@ -15,11 +15,19 @@ INSERT INTO monitoramento.tipo_sensor (id_tipo_sensor,txt_descricao) VALUES (2,'
 INSERT INTO monitoramento.tipo_sensor (id_tipo_sensor,txt_descricao) VALUES (3,'Inclinômetro');
 INSERT INTO monitoramento.tipo_sensor (id_tipo_sensor,txt_descricao) VALUES (4,'Sensor de deslocamento');
 
-INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (1,1,'nvla001',1,1);
-INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (2,2,'nvla002',1,2);
-INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (3,3,'pres001',2,1);
-INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (4,4,'pres002',2,2);
-INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (5,5,'incl001',3,1);
-INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (6,6,'incl002',3,2);
-INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (7,7,'desl001',4,1);
-INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (8,8,'desl002',4,2);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (1,1,'nvla01a',1,1);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (2,null,'nvla01b',1,1);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (3,2,'nvla02a',1,2);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (4,null,'nvla02b',1,2);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (5,3,'pres01a',2,1);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (6,null,'pres01b',2,1);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (7,4,'pres02a',2,2);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (8,null,'pres02b',2,2);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (9,5,'incl01a',3,1);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (10,null,'incl01b',3,1);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (11,6,'incl02a',3,2);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (12,null,'incl02b',3,2);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (13,7,'desl01a',4,1);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (14,null,'desl01b',4,1);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (15,8,'desl02a',4,2);
+INSERT INTO monitoramento.sensor (id_sensor,id_ativo,txt_id_hardware,id_tipo_sensor,id_barragem) VALUES (16,null,'desl02b',4,2);

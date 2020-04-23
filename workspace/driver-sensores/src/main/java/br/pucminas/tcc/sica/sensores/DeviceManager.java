@@ -1,5 +1,6 @@
 package br.pucminas.tcc.sica.sensores;
 
+import java.text.MessageFormat;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.*;
@@ -15,14 +16,22 @@ public class DeviceManager {
 
     private DeviceManager() {
         devices = new ArrayList<>();
-        devices.add(new Device("desl001", SensorType.DISPLACEMENT));
-        devices.add(new Device("desl002", SensorType.DISPLACEMENT));
-        devices.add(new Device("incl001", SensorType.INCLINATION));
-        devices.add(new Device("incl002", SensorType.INCLINATION));
-        devices.add(new Device("nvla001", SensorType.WATER_LEVEL));
-        devices.add(new Device("nvla002", SensorType.WATER_LEVEL));
-        devices.add(new Device("pres001", SensorType.PRESSURE));
-        devices.add(new Device("pres002", SensorType.PRESSURE));
+        devices.add(new Device("desl01a", SensorType.DISPLACEMENT, true));
+        devices.add(new Device("desl01b", SensorType.DISPLACEMENT));
+        devices.add(new Device("desl02a", SensorType.DISPLACEMENT));
+        devices.add(new Device("desl02b", SensorType.DISPLACEMENT));
+        devices.add(new Device("incl01a", SensorType.INCLINATION));
+        devices.add(new Device("incl01b", SensorType.INCLINATION));
+        devices.add(new Device("incl02a", SensorType.INCLINATION));
+        devices.add(new Device("incl02b", SensorType.INCLINATION));
+        devices.add(new Device("nvla01a", SensorType.WATER_LEVEL, true));
+        devices.add(new Device("nvla01b", SensorType.WATER_LEVEL));
+        devices.add(new Device("nvla02a", SensorType.WATER_LEVEL));
+        devices.add(new Device("nvla02b", SensorType.WATER_LEVEL));
+        devices.add(new Device("pres01a", SensorType.PRESSURE));
+        devices.add(new Device("pres01b", SensorType.PRESSURE));
+        devices.add(new Device("pres02a", SensorType.PRESSURE));
+        devices.add(new Device("pres02b", SensorType.PRESSURE));
 
         listeners = new SensorEventListeners();
         simulator = new Simulator(devices, listeners).start();
@@ -90,6 +99,12 @@ public class DeviceManager {
                     while (active) {
                         try {
                             double value = (Math.random() * 2) * (Math.random() < 0.5 ? 1 : -1);
+
+                            if (device.isDebug()) {
+                                System.out.println(MessageFormat.format("{0} - [{1}]\t''{2}'' realizou leitura: {3}", LocalDateTime.now(),
+                                        device.getSensorType(), device.getId(), value));
+                            }
+
                             listeners.fireEvent(new DeviceEvent(device, LocalDateTime.now(), value), device.getSensorType());
                             Thread.sleep(2000L);
                         } catch (InterruptedException exception) {
