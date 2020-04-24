@@ -1,4 +1,4 @@
-package br.pucminas.tcc.sica.monitoramento.dominio.servico;
+package br.pucminas.tcc.sica.monitoramento.aplicacao.sensor;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -14,6 +14,7 @@ import br.pucminas.tcc.sica.monitoramento.dominio.dto.LeituraSensorDto;
 import br.pucminas.tcc.sica.monitoramento.dominio.dto.mapper.LeituraSensorMapper;
 import br.pucminas.tcc.sica.monitoramento.dominio.entidade.LeituraSensor;
 import br.pucminas.tcc.sica.monitoramento.dominio.repo.SensorRepository;
+import br.pucminas.tcc.sica.monitoramento.dominio.servico.LeituraSensorService;
 import br.pucminas.tcc.sica.monitoramento.infra.WebSocketConfiguration;
 import br.pucminas.tcc.sica.sensores.*;
 
