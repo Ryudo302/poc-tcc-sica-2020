@@ -79,7 +79,7 @@ class Login extends React.Component {
                                         </Form.Group>
                                     </Form>
 
-                                    {this.state.loginFalhou && <div className="alert alert-warning">Invalid Credentials</div>}
+                                    {this.state.loginFalhou && <div className="alert alert-warning">Usuário ou senha inválido(s)!</div>}
                                     {this.state.loginSucesso && <div>Login Sucessful</div>}
                                 </Card.Body>
                             </Card>
