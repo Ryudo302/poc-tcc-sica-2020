@@ -7,7 +7,6 @@ import AuthService from './services/AuthService';
 const unregister = fetchIntercept.register({
     request: function (url, config) {
         config.headers['Authorization'] = AuthService.getAuthToken();
-        console.log("Fetch Headers:", config.headers);
         return [url, config];
     },
 
