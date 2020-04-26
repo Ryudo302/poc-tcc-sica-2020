@@ -59,7 +59,7 @@ class Barragem extends React.Component {
             <Card>
                 <Card.Body>
                     {barragem.nivelEmergencia
-                        ? <span className={'float-right text-center text-light nivel-emergencia nivel-emergencia-' + barragem.nivelEmergencia.nivel} style={{ fontSize: 'xxx-large' }}>
+                        ? <span className={'float-right text-center text-light nivel-emergencia nivel-emergencia-' + barragem.nivelEmergencia.nivel} style={{ fontSize: '55px' }}>
                             <p style={{ position: 'relative', right: '0.8rem' }}>{barragem.nivelEmergencia.nivel}</p>
                         </span>
                         : ''}
