@@ -46,3 +46,17 @@
     min-height: 100%;
     min-height: calc(100vh - 54px);
 }
+
+.carregando {
+    width: 30rem;
+    height: 30rem;
+    float: left;
+    position: absolute;
+    z-index: 5;
+    border-width: 4em;
+    opacity: 0.8;
+    left: 50%;
+    margin-left: -15rem;
+    top: 50%;
+    margin-top: -15rem;
+}
