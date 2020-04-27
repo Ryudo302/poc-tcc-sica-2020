@@ -24,7 +24,7 @@ public class BarragemEventConsumer {
     @Autowired
     private BarragemService barragemService;
 
-    @RabbitListener(queues = { "${sica.mq.queue.barragem}" })
+    @RabbitListener(autoStartup = "false", queues = { "${sica.mq.queue.barragem}" })
     public void receberEvento(BarragemSimpleDto barragemDto) {
         Barragem barragem = barragemService.buscarPorId(barragemDto.getId())
                 .orElseGet(() -> criarNovaBarragem(barragemDto));
