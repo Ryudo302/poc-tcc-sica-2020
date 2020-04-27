@@ -7,37 +7,8 @@ Protótipo arquitetural de sistema desenvolvido como parte do **Trabalho de Conc
 
 ## Pré-Requisitos
 
-* Java
-* Apache Maven
-* PostgreSQL
-* Servidor de e-mail local (Para Windows, sugere-se o **hMailServer**: [Download](https://www.hmailserver.com/download).)
-* Yarn
+* Java 11+
+* Apache Maven 3.6+
+* PostgreSQL 9.4
+* Yarn 1.13+
 * Docker (opcional)
-
-## Ambiente
-
-### Docker
-
-### Local
-
-#### Banco de Dados
-
-#### Servidor de e-mail
-
-- Caso utilize o **hMailServer**, seguir os passos descritos em [Setup a Local Only Email Server (Windows Only)](https://gist.github.com/raelgc/6031306).
-
-### Aplicação
-
-#### Front-end
-
-##### Versões de componentes utilizados
-
-* Ver `package.json`.
-
-##### Build ###
-
-Para baixar todas as dependências do projeto, basta rodar a partir da raiz do mesmo: `yarn`.
-
-## Outras Informações
-
-- URL padrão local: http://localhost:8080/poc-sica
