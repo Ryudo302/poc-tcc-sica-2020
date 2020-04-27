@@ -1,25 +1,42 @@
 'use strict'
 
 import React from 'react';
-import api from './Client';
 import Container from 'react-bootstrap/Container';
-
-import AtivosList from './components/AtivosList';
-import MenuLateral from './components/MenuLateral';
-
 import '../resources/static/css/App.css';
+import api from './Client';
+import AtivosList from './components/AtivosList';
+import FiltrosConsulta from './components/FiltrosConsulta';
+import MenuLateral from './components/MenuLateral';
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            ativos: []
+            ativos: [],
+            filtros: {}
         };
+
+        this.mudarFiltros = this.mudarFiltros.bind(this);
+        this.atualizarConsulta = this.atualizarConsulta.bind(this);
     }
 
     componentDidMount() {
-        api('/api/ativos', { method: 'GET' })
+       this.atualizarConsulta();
+    }
+
+    mudarFiltros(novosFiltros) {
+        this.setState({
+            filtros: novosFiltros
+        });
+        this.atualizarConsulta(novosFiltros);
+    }
+
+    atualizarConsulta(novosFiltros) {
+        let filtros = (novosFiltros || this.state.filtros);
+        let queryParams = Object.keys(filtros).map(key => key + '=' + filtros[key] + '&');
+
+        api('/api/ativos?' + queryParams, { method: 'GET' })
             .then(response => response.json())
             .then(ativos => {
                 ativos.forEach(ativo => {
@@ -41,6 +58,7 @@ class App extends React.Component {
 	                <div id="content">
 	
 		                <Container>
+                            <FiltrosConsulta filtrosCallback={this.mudarFiltros} />
 		                    <AtivosList ativos={this.state.ativos} />
 		                </Container>
 		                    

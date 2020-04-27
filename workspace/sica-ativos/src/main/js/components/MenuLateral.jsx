@@ -32,7 +32,7 @@ class MenuLateral extends React.Component {
                 <li className="nav-item active">
                     <a className="nav-link" href="/">
                     <i className="fas fa-list-alt"></i>
-                    <span>Cadastro</span></a>
+                    <span>Consulta</span></a>
                 </li>
                 
                 <hr className="sidebar-divider d-none d-md-block" />

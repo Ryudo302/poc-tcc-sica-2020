@@ -19,8 +19,8 @@ public class AtivoApi {
     private AtivoService ativoService;
 
     @GetMapping(value = "/api/ativos", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Ativo> getTodosAtivo() {
-        return ativoService.buscarTodos();
+    public List<Ativo> getAtivos(@RequestParam(name = "tipoAtivo", required = false) Integer idTipoAtivo) {
+        return ativoService.buscar(idTipoAtivo);
     }
 
     @GetMapping(value = "/api/ativos/{idAtivo}", produces = MediaType.APPLICATION_JSON_VALUE)

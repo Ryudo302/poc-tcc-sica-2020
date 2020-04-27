@@ -19,6 +19,14 @@ public class TipoAtivo extends AbstractEntidade<Integer> {
     @Column(name = "TXT_DESCRICAO", length = 50, nullable = false)
     private String descricao;
 
+    public TipoAtivo(Integer id) {
+        this.id = id;
+    }
+
+    public TipoAtivo() {
+        this(null);
+    }
+
     @Override
     public Integer getId() {
         return id;
