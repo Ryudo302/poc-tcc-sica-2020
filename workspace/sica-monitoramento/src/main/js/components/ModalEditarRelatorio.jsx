@@ -15,6 +15,12 @@ class ModalEditarRelatorio extends React.Component {
 
         this.handleFecharModal = this.handleFecharModal.bind(this);
         this.salvarRelatorio = this.salvarRelatorio.bind(this);
+
+        this.primeiroInput = React.createRef();
+    }
+
+    componentDidMount() {
+        this.primeiroInput.current.focus();
     }
 
     handleFecharModal() {
@@ -61,7 +67,7 @@ class ModalEditarRelatorio extends React.Component {
                     <Form onSubmit={this.salvarRelatorio}>
                         <Form.Group controlId="danoPotencialAssociado">
                             <Form.Label>Dano Potencial Associado (DPA)</Form.Label>
-                            <Form.Control required as="select" custom>
+                            <Form.Control ref={this.primeiroInput} required as="select" custom>
                                 <option>BAIXO</option>
                                 <option>MEDIO</option>
                                 <option>ALTO</option>
