@@ -7,6 +7,7 @@ import api from './Client';
 import AtivosList from './components/AtivosList';
 import FiltrosConsulta from './components/FiltrosConsulta';
 import MenuLateral from './components/MenuLateral';
+import TratamentoErro from './components/TratamentoErro';
 
 class App extends React.Component {
 
@@ -56,11 +57,13 @@ class App extends React.Component {
                 <div id="content-wrapper" className="d-flex flex-column">
 
 	                <div id="content">
-	
-		                <Container>
-                            <FiltrosConsulta filtrosCallback={this.mudarFiltros} />
-		                    <AtivosList ativos={this.state.ativos} />
-		                </Container>
+
+                        <TratamentoErro>
+                            <Container>
+                                <FiltrosConsulta filtrosCallback={this.mudarFiltros} />
+                                <AtivosList ativos={this.state.ativos} />
+                            </Container>
+                        </TratamentoErro>
 		                    
 		            </div>
 		        </div>
