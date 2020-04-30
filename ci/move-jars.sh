@@ -1,6 +1,8 @@
 #!/bin/bash
 
 echo "Movendo JARs para diretório Docker"
+
+mkdir -p docker/full/target/
 mv workspace/sica-ativos/target/sica-ativos.jar docker/full/target/
 mv workspace/sica-seguranca/target/sica-seguranca.jar docker/full/target/
 mv workspace/sica-monitoramento/target/sica-monitoramento.jar docker/full/target/
