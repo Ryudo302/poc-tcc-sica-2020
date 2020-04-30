@@ -85,7 +85,7 @@ docker:
     #- docker build --cache-from $CONTAINER_IMAGE_BASE/sica-seguranca:latest --tag $CONTAINER_IMAGE_BASE/sica-seguranca:latest ./workspace/sica-seguranca/
     #- docker push $CONTAINER_IMAGE_BASE/sica-seguranca:latest
     - docker pull $CONTAINER_IMAGE_BASE/sica-web-full:latest || true
-    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-web-full:latest --tag $CONTAINER_IMAGE_BASE/sica-web-full:latest ./docker/mongo/
+    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-web-full:latest --tag $CONTAINER_IMAGE_BASE/sica-web-full:latest ./docker/full/
     - docker push $CONTAINER_IMAGE_BASE/sica-web-full:latest
     - docker pull $CONTAINER_IMAGE_BASE/mongodb:latest || true
     - docker build --cache-from $CONTAINER_IMAGE_BASE/mongodb:latest --tag $CONTAINER_IMAGE_BASE/mongodb:latest ./docker/mongo/
