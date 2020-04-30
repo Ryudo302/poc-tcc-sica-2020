@@ -1,7 +1,6 @@
 package br.pucminas.tcc.sica.seguranca.infra;
 
 import org.springframework.context.annotation.*;
-import org.springframework.web.servlet.config.annotation.*;
 
 import springfox.documentation.builders.*;
 import springfox.documentation.service.ApiInfo;
@@ -11,7 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig extends WebMvcConfigurationSupport {
+public class SwaggerConfig {
 
     @Bean
     public Docket greetingApi() {
@@ -31,13 +30,5 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .license("MIT")
                 .licenseUrl("https://gitlab.com/ThiagoColbert/poc-tcc-sica-2020/-/blob/master/LICENSE")
                 .build();
-    }
-
-    @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }

@@ -25,9 +25,11 @@ class App extends React.Component {
 
                     <div id="content">
 
-                        <Container fluid>
-                            <BarragensList />
-                        </Container>
+                        <TratamentoErro>
+                            <Container fluid>
+                                <BarragensList />
+                            </Container>
+                        </TratamentoErro>
 
                     </div>
                 </div>
