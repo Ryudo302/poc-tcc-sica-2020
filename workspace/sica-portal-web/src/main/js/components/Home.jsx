@@ -9,6 +9,7 @@ class Home extends React.Component {
 
     render() {
         const usuarioLogado = AuthService.isUserLoggedIn();
+        const usuario = AuthService.getLoggedInUsername();
 
         return (
             <div className="vertical-center">
@@ -18,7 +19,7 @@ class Home extends React.Component {
                             <div className="text-center">
                                 <div className="d-flex flex-column flex-wrap justify-content-center text-light">
                                     <h2>Sistema de Controle Ambiental - SICA</h2>
-                                    <h4>Bem-vindo!</h4>
+                                    <h4>Bem-vindo, {usuario}!</h4>
                                     {!usuarioLogado && <p>Por favor, efetue login para continuar.</p>}
                                 </div>
                                 <img src={logo} alt="Logo do sistema" className="logo" />

@@ -1,6 +1,5 @@
 import React from 'react';
 import Spinner from 'react-bootstrap/Spinner';
-import Iframe from 'react-iframe';
 import { Redirect } from 'react-router-dom';
 
 class Modulo extends React.Component {

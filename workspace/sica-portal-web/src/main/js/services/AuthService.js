@@ -35,7 +35,8 @@ class AuthService {
     }
 
     getLoggedInUsername() {
-        return sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME) || '';
+        let username = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+        return username ? username.charAt(0).toUpperCase() + username.slice(1) : '';
     }
 
     isUserLoggedIn() {

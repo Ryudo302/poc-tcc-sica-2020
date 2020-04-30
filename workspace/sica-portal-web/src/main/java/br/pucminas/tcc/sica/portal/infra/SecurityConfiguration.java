@@ -18,7 +18,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/", "/built/**", "/css/**", "/img/**", "/favicon.ico", "/*.json").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/error", "/home", "/built/**", "/css/**", "/img/**", "/favicon.ico", "/*.*").permitAll()
                 .antMatchers(HttpMethod.OPTIONS, "/**")
                 .permitAll()
                 .anyRequest().authenticated()
@@ -29,7 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private AuthenticationEntryPoint authenticationEntryPoint() {
         return (request, response, exception) -> {
-            if (request.getRequestURI().matches("^/(?!api|.+\\\\..+).*$")) {
+            if (request.getRequestURI().matches("^/(?!api|.+\\\\..+).+$")) {
+                System.out.println(request.getRequestURI() + " será redirecionado para /");
                 response.sendRedirect("/");
             } else {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, exception.getMessage());

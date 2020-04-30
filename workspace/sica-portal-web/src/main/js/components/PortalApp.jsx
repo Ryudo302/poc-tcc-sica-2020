@@ -8,6 +8,7 @@ import AuthenticatedRoute from './AuthenticatedRoute';
 import Home from './Home';
 import Login from './Login';
 import Modulo from './Modulo';
+import TratamentoErro from './TratamentoErro';
 
 class PortalApp extends React.Component {
 
@@ -23,7 +24,7 @@ class PortalApp extends React.Component {
         this.logout = this.logout.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         if (AuthService.isUserLoggedIn()) {
             this.carregarModulos();
         }
@@ -32,8 +33,18 @@ class PortalApp extends React.Component {
     carregarModulos() {
         api('/api/modulos', { method: 'GET' })
             .then(response => response.json())
+            .then(response => {
+                if (response.status == 401) {
+                    throw Error();
+                } else {
+                    return response;
+                }
+            })
             .then(modulos => {
                 this.setState({ modulos: modulos });
+            })
+            .catch(error => {
+                this.logout();
             });
     }
 
@@ -45,21 +56,22 @@ class PortalApp extends React.Component {
 
             this.props.history.push('/modulo');
         } else {
-            // TODO
             console.log("Usuário não autenticado");
+            this.logout();
         }
     }
 
     logout() {
         AuthService.logout();
-        this.setState({ modulos: [] });
+        this.setState({
+            modulos: [],
+            moduloAtual: null
+        });
     }
 
     render() {
         const usuarioLogado = AuthService.isUserLoggedIn();
-        
-        let usuario = AuthService.getLoggedInUsername();
-        usuario && (usuario = usuario.charAt(0).toUpperCase() + usuario.slice(1))
+        const usuario = AuthService.getLoggedInUsername();
 
         return (
             <div key={this.props.location.pathname}>
@@ -72,18 +84,21 @@ class PortalApp extends React.Component {
                                 <Nav.Link key={modulo.id} onClick={() => this.alterarModulo(modulo)}>{modulo.nome}</Nav.Link>
                             )}
                         </Nav>
+                        <hr className="sidebar-divider" />
                         <Nav className="justify-content-end">
                             {!usuarioLogado && <Nav.Link as={Link} to="/login">Login</Nav.Link>}
                             {usuarioLogado && <Nav.Link as={Link} to="/logout" onClick={this.logout}>{usuario} (Logout)</Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-                <Switch>
-                    <Route path="/home" exact component={Home} />
-                    <Route path="/login" exact render={(props) => <Login {...props} loginCallback={this.carregarModulos} />} />
-                    <AuthenticatedRoute path="/modulo" exact render={(props) => <Modulo {...props} modulo={this.state.moduloAtual} />} />
-                    <Route path="*" render={() => <Redirect to="/home" />} />
-                </Switch>
+                <TratamentoErro>
+                    <Switch>
+                        <Route path="/home" exact component={Home} />
+                        <Route path="/login" exact render={(props) => <Login {...props} loginCallback={this.carregarModulos} />} />
+                        <AuthenticatedRoute path="/modulo" exact render={(props) => <Modulo {...props} modulo={this.state.moduloAtual} />} />
+                        <Route path="*" render={() => <Redirect to="/home" />} />
+                    </Switch>
+                </TratamentoErro>
             </div>
         );
     }
