@@ -88,7 +88,7 @@ public class DeviceManager {
             devices.stream().forEach(device -> {
                 threadPool.execute(() -> {
 
-                    long delayInicial = (long) (Math.random() * 2000);
+                    long delayInicial = (long) (Math.random() * 5000);
                     try {
                         Thread.sleep(delayInicial);
                     } catch (InterruptedException exception) {
@@ -106,7 +106,7 @@ public class DeviceManager {
                             }
 
                             listeners.fireEvent(new DeviceEvent(device, LocalDateTime.now(), value), device.getSensorType());
-                            Thread.sleep(2000L);
+                            Thread.sleep(5000L);
                         } catch (InterruptedException exception) {
                             System.err.println("Erro na execução do simulador: " + exception);
                             exception.printStackTrace();
