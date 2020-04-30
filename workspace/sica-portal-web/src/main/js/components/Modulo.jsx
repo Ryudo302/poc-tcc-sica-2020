@@ -34,6 +34,7 @@ class Modulo extends React.Component {
     static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.modulo && !prevState.modulo || nextProps.modulo && nextProps.modulo.id !== prevState.modulo.id) {
             return {
+                carregando: true,
                 modulo: nextProps.modulo
             };
         } else {
