@@ -73,16 +73,20 @@ docker:
     - echo $DOCKER_REGISTRY_PASSWORD | docker login $DOCKER_REGISTRY -u $GITLAB_USER_LOGIN --password-stdin
     - export NAMESPACE="$(echo "${CI_PROJECT_NAMESPACE}" | tr A-Z a-z)"
     - export CONTAINER_IMAGE_BASE=${DOCKER_REGISTRY}/${NAMESPACE}/${CI_PROJECT_NAME}
+    - sh ./ci/move-jars.sh
   script:
-    - docker pull $CONTAINER_IMAGE_BASE/sica-ativos:latest || true
-    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-ativos:latest --tag $CONTAINER_IMAGE_BASE/sica-ativos:latest ./workspace/sica-ativos/
-    - docker push $CONTAINER_IMAGE_BASE/sica-ativos:latest
-    - docker pull $CONTAINER_IMAGE_BASE/sica-monitoramento:latest || true
-    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-monitoramento:latest --tag $CONTAINER_IMAGE_BASE/sica-monitoramento:latest ./workspace/sica-monitoramento/
-    - docker push $CONTAINER_IMAGE_BASE/sica-monitoramento:latest
-    - docker pull $CONTAINER_IMAGE_BASE/sica-seguranca:latest || true
-    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-seguranca:latest --tag $CONTAINER_IMAGE_BASE/sica-seguranca:latest ./workspace/sica-seguranca/
-    - docker push $CONTAINER_IMAGE_BASE/sica-seguranca:latest
+    #- docker pull $CONTAINER_IMAGE_BASE/sica-ativos:latest || true
+    #- docker build --cache-from $CONTAINER_IMAGE_BASE/sica-ativos:latest --tag $CONTAINER_IMAGE_BASE/sica-ativos:latest ./workspace/sica-ativos/
+    #- docker push $CONTAINER_IMAGE_BASE/sica-ativos:latest
+    #- docker pull $CONTAINER_IMAGE_BASE/sica-monitoramento:latest || true
+    #- docker build --cache-from $CONTAINER_IMAGE_BASE/sica-monitoramento:latest --tag $CONTAINER_IMAGE_BASE/sica-monitoramento:latest ./workspace/sica-monitoramento/
+    #- docker push $CONTAINER_IMAGE_BASE/sica-monitoramento:latest
+    #- docker pull $CONTAINER_IMAGE_BASE/sica-seguranca:latest || true
+    #- docker build --cache-from $CONTAINER_IMAGE_BASE/sica-seguranca:latest --tag $CONTAINER_IMAGE_BASE/sica-seguranca:latest ./workspace/sica-seguranca/
+    #- docker push $CONTAINER_IMAGE_BASE/sica-seguranca:latest
+    - docker pull $CONTAINER_IMAGE_BASE/sica-web-full:latest || true
+    - docker build --cache-from $CONTAINER_IMAGE_BASE/sica-web-full:latest --tag $CONTAINER_IMAGE_BASE/sica-web-full:latest ./docker/mongo/
+    - docker push $CONTAINER_IMAGE_BASE/sica-web-full:latest
     - docker pull $CONTAINER_IMAGE_BASE/mongodb:latest || true
     - docker build --cache-from $CONTAINER_IMAGE_BASE/mongodb:latest --tag $CONTAINER_IMAGE_BASE/mongodb:latest ./docker/mongo/
     - docker push $CONTAINER_IMAGE_BASE/mongodb:latest
