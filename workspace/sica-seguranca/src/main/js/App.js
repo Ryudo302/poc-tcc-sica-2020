@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import '../resources/static/css/App.css';
 import BarragensList from './components/BarragensList';
 import MenuLateral from './components/MenuLateral';
+import TratamentoErro from './components/TratamentoErro';
 
 class App extends React.Component {
 
